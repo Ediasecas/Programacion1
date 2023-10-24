@@ -232,5 +232,6 @@ public class ejercicio3 {
 				
 				
 				if(num_1 =< 0)
+					
 				
 }

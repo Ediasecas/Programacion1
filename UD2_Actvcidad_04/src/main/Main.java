@@ -1,15 +1,15 @@
-package ud2acticidad4;
+package main;
 
 import java.util.Scanner;
 
-public class main {
+public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 		Scanner entrada = new Scanner(System.in);
 		
-	
+		
 		//EJERCICIO 1
 						
 		double numeros[] = new double [10];
@@ -231,7 +231,8 @@ public class main {
 	            {
 	                
 	            valoresenteros[i - numP] = i;
-	            System.out.println(valoresenteros[i - numP]+" , ");
+	            System.out.println("El array de los numeros introducidos desde P-Q son");
+	            System.out.println(valoresenteros[i - numP]+" : ");
 	                
 	            }
 	    } 
@@ -310,7 +311,7 @@ public class main {
 					
 				{
 					contador1++;
-					System.out.println("Las posiciones de N = " + valorN + " son la " + i +  "º");
+					System.out.println("Las posiciones de N = " + valorN + " en el array = 100 son la " + i +  "º");
 					
 				}
 				
@@ -422,9 +423,79 @@ public class main {
 			
 			//EJERCICIO 12
 			
-			int10ent[] = new int[10];
+			int ent10[] = new int[10];
+			boolean salir = false;
+			int seleccionar; //escoger entre todas las opciones
+			int numv; //Numv introducido
+			int posicP; //Posicion P introducida
+			int numg;
 			
-					
+			do {
+	        	
+		    		System.out.println("1. Mostrar valores.");
+		    		System.out.println("2. Introducir valores.");
+		    		System.out.println("3. Salir.");
+		    		System.out.println("Seleccione una opción, escogiendola por su numero");
+		    		
+		    		seleccionar = entrada.nextInt();
+		    	
+		    		switch (seleccionar)
+		    	
+		    		{
+		           
+		    		case 1:
+		                
+		    				System.out.println("Mostrando valores del array:" + ent10);
+		    		
+		    				break;
+		                
+		    				
+		    		case 2:
+		               
+		    				System.out.println("Valor de V: ");
+		    				numv = entrada.nextInt();
+		                
+		    				System.out.println("Posicion de P: ");
+		    				posicP = entrada.nextInt();
+		             
+		    				for(int i=0 ; i<ent10.length ; i++) 
+		    				
+		    				{
+		    					
+		    					
+		    					
+		    				}
+		    				
+		    				System.out.println("El numero V=" + numv + " en la posicion P=" + posicP +
+		    						" del array creado es " + (ent10[posicP] = numv));
+		    						    							    				  
+		    				break;
+		                		
+		    				
+			    	 case 3:
+			    		
+			            	System.out.println("Programa Finalizado");
+			            	salir = true;
+			                break;
+		         
+		                
+		    		}
+	        
+				}
+			
+			while (!salir);
+			
+			
+			
+			//EJERCICIO 13
+			
+			
+			System.out.println("Introduce un valor V inicial");
+			int numvini = entrada.nextInt();
+			
+			
+			
+			
 			//EJERCICIO 14
 			
 			
@@ -470,13 +541,8 @@ public class main {
 				}
 			       
 			}
-			
-			
-			
-			
-		
-		
-		
-	}//cuerpo del ejerdda
+
+
+	}
 
 }

@@ -33,8 +33,11 @@ public class Main {
 			{
 			
 			case 1:
+				System.out.println("Para el piedra papel o tijera hay 3 casos");
 				
 			
+
+			case 2:
 			System.out.println("Generacion de la jugada del PC");
 			
 			System.out.println("Inserte piedra(P), papel(L) ó tijera(T)");

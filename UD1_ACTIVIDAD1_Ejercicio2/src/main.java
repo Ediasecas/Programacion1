@@ -87,7 +87,7 @@ public class main {
 				System.out.println("Introduce el numero b");
 				int num_b  =  entrada.nextInt();
 				
-				System.out.println("S")
+				System.out.println("S");
 				
 				
 				

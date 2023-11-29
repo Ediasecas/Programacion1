@@ -13,12 +13,22 @@ public class CuentaBancaria
 	double dineroIngresado;
 	double dineroRetirado;
 	
-	public CuentaBancaria(String IBAN, String titular, double saldo, int movimientos)
+	private int numMaxMovimientos = 100;
+	private Movimiento[] mov;
+	
+	public CuentaBancaria(String IBAN, String titular)
 	{
 		this.IBAN = IBAN;
 		this.titular = titular;
-		this.saldo = saldo;
-		this.movimientos = movimientos;
+		this.saldo = 0.0;
+		
+	}
+	
+	public CuentaBancaria(int numMaxMovimientos)
+	{
+	
+		this.numMaxMovimientos = numMaxMovimientos;
+		this.mov = new Movimiento[this.numMaxMovimientos];
 	}
 	
 	
@@ -50,6 +60,7 @@ public class CuentaBancaria
 
 		return isFormatOk;
     }
+    
 	
 	
     
@@ -65,6 +76,22 @@ public class CuentaBancaria
 	}
 	
 	
+    private boolean validacionTitular(String titular)
+    {
+    	Boolean isFormatOk = false;
+		String formato = "([A-Z][a-zA-Z])+([a-zA-z]+([ '-][a-zA-Z]+)*))";
+		Pattern pattern = Pattern.compile(formato);
+		Matcher matcher = pattern.matcher(titular);
+		if(matcher.matches())
+		{
+			this.titular = titular;
+			isFormatOk = true;
+		}
+
+		return isFormatOk;
+    }
+    
+    
 	
 	public double getSaldo() 
 	{
@@ -96,12 +123,12 @@ public class CuentaBancaria
 	{ 
 			if (dineroIngresado > 0)
 			{
-				dineroIngresado = (dineroIngresado + saldo);
+				saldo = (dineroIngresado + saldo);
 				System.out.println("Usted ha ingresado la cantidad de " + dineroIngresado +"€");
 				
 				if(dineroIngresado > 3000)
 				{
-					dineroIngresado = (dineroIngresado + saldo);
+					saldo = (dineroIngresado + saldo);
 					System.out.println("Usted ha ingresado la cantidad de " + dineroIngresado 
 							+ "€, debido a que esta cantidad supera los 3000€, notificar a Hacienda");
 					
@@ -121,18 +148,18 @@ public class CuentaBancaria
 	{ 
 			if (dineroRetirado > 0)
 			{
-				dineroRetirado = (saldo - dineroRetirado);
+				saldo = (saldo - dineroRetirado);
 				System.out.println("Usted ha retirado la cantidad de " + dineroRetirado +"€");
 				
-				if(dineroRetirado < 0)
+				if(saldo < 0)
 				{
-					dineroRetirado = (saldo - dineroRetirado);
+					saldo = (saldo - dineroRetirado);
 					System.out.println("Su saldo es negativo");
 				}
 				
-				if(dineroRetirado < -50)
+				if(saldo < -50)
 				{
-					System.out.println("No puede tener un saldo de -50€ en la cuenta");
+					System.out.println("¡ERROR! No puede tener un saldo de -50€ en la cuenta");
 				}
 			}
 			

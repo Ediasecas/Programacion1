@@ -19,23 +19,16 @@ public class CuentaBancaria
 	private double cantidad;
 	
 	private int numMaxMovimientos = 100;
-	private Movimiento[] mov;
+	private Movimiento[] Movimiento;
+	
 	
 	public CuentaBancaria(String IBAN, String titular)
 	{
 		this.IBAN = IBAN;
 		this.titular = titular;
-		this.saldo = 0.0;
+		this.Movimiento = new Movimiento [100];
 		
 	}
-	
-	public CuentaBancaria(int numMaxMovimientos)
-	{
-	
-		this.numMaxMovimientos = numMaxMovimientos;
-		this.mov = new Movimiento[this.numMaxMovimientos];
-	}
-	
 	
 	
 	public String getIBAN() 
@@ -50,7 +43,7 @@ public class CuentaBancaria
 
 	}
     
-    
+   /* 
     public boolean validacionIBAN()
     {
     	Boolean isFormatOk = false;
@@ -65,6 +58,7 @@ public class CuentaBancaria
 
 		return isFormatOk;
     }
+    */
     
 	
 	
@@ -81,10 +75,10 @@ public class CuentaBancaria
 	}
 	
 	
-    public boolean validacionTitular()
+   /* public boolean validacionTitular()
     {
     	Boolean isFormatOk = false;
-		String formato = "([A-Z][a-zA-Z])+([a-zA-z]+([ '-][a-zA-Z]+)*))";
+		String formato = "([A-Z] [a-zA-Z]) + ([a-zA-z]+([ '-][a-zA-Z]+)*)";
 		Pattern pattern = Pattern.compile(formato);
 		Matcher matcher = pattern.matcher(titular);
 		if(matcher.matches())
@@ -95,7 +89,7 @@ public class CuentaBancaria
 
 		return isFormatOk;
     }
-    
+    */
     
 	
 	public double getSaldo() 
@@ -177,13 +171,13 @@ public class CuentaBancaria
 	}
 	
 	
-	public String mostrarMovimientos()
+	public void mostrarMovimientos()
 	
 	{
-		String movi = ("ID: " + this.ID + ", Fecha: " + this.fecha + ", Tipo(ingreso o retirada): " + this.tipoMovimiento 
-				+ ", Cantidad: " + this.cantidad);
-		
-		return movi;
+		for(int i = 0; i < mov.length; i++)
+		{
+			ºººº
+		}
 	}
 	
 	

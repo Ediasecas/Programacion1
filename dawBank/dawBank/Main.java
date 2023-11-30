@@ -1,6 +1,8 @@
 package dawBank;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main
 
@@ -12,45 +14,31 @@ public class Main
 
 		System.out.println("__ Banco Santander __ ");
 		
+		System.out.println("Introduzca sus datos");
+		CuentaBancaria cuenta = new CuentaBancaria("","");
 		
 		System.out.println("Inserte el IBAN en su formato correcto");
-		String IBAN = entrada.nextLine();
+        String IBAN = entrada.nextLine();
+        Pattern formato = Pattern.compile("[A-Z]{2}[0-9]{22}");
+        formato.matcher(IBAN);
+        Matcher mat = formato.matcher(IBAN);
 		
-			
+		while(!mat.matches())
+			{
+		        	 
+		     System.out.println("IBAN no válido. Introduzcalo de nuevo:");
+		     IBAN = entrada.nextLine();
+		     mat = formato.matcher(IBAN);
+		           
+		    }
+		 
+         
+        System.out.println("Inserte el titular de la cuenta en su formato correcto");
+ 		String titular = entrada.nextLine();
+		    
 
-		System.out.println("Inserte el titular de la cuenta en su formato correcto");
-		String titular = entrada.nextLine();
-		
-		
-		CuentaBancaria cuenta = new CuentaBancaria(IBAN, titular);
-		
-		
-		if(cuenta.validacionIBAN() == true)
-		{
-			System.out.println("Se ha introducido el IBAN correctamente");
-		}
-		
-		else
-		{
-			System.out.println("No se introdujo el IBAN correctamente");
-		}
-		
-		
-		if(cuenta.validacionTitular() == true)
-		{
-			System.out.println("Se ha introducido el titular correctamente");
-		}
-		
-		else
-		{
-			System.out.println("No se introdujo el titular correctamente");
-		}
-		
-		
-		
 		boolean salir = false;
 		int seleccionar;
-		
 		
 		do 
 		{
@@ -78,9 +66,9 @@ public class Main
 				case 1:	
 					
 					System.out.println("Los datos de la cuenta son :");
-					System.out.println("Su IBAN es " + cuenta.getIBAN() );
-					System.out.println("El nombre del titular es  " + cuenta.getTitular());
-					System.out.println("Su saldo actual es " + cuenta.getSaldo());
+					System.out.println("Su IBAN es: " + cuenta.getIBAN() );
+					System.out.println("El nombre del titular es:  " + cuenta.getTitular());
+					System.out.println("Su saldo actual es: " + cuenta.getSaldo());
 			
 				break;
 				

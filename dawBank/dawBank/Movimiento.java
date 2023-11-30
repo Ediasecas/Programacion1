@@ -7,7 +7,7 @@ public class Movimiento
 
 	private String ID;
 	private String fecha;
-	private String tipo;
+	private String tipoMovimiento;
 	private double cantidad;
 	
 	
@@ -15,7 +15,7 @@ public class Movimiento
 	{
 		this.ID = ID;
 		this.fecha = fecha;
-		this.tipo = tipo;
+		this.tipoMovimiento = tipo;
 		this.cantidad = cantidad;
 	}
 
@@ -40,43 +40,16 @@ public class Movimiento
 	{
 		this.fecha = fecha;
 	}
-	/*
-	private boolean setFecha(String Fecha)
-	{
-		this.fecha = fecha;
-		return true;
-
-	}
 	
-	private boolean FechaValidacion(String fecha) 
-	{
-		boolean isFormatOk = false;
-		LocalDateTime fechita = LocalDateTime.now();
-		DateTimeFormatter formatfechita = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-		String fechaconsuformato = fechita.format(formatfechita);
-		Pattern pattern = Pattern.compile(fechaconsuformato);
-		Matcher matcher = pattern.matcher(fecha);
-		
-		if(matcher.matches())
-		{
-			this.fecha = fecha;
-			isFormatOk = true;
-		}
-		
-		return isFormatOk;
-	}
 	
-	!Esta validacion escribirla en el main principal(en la cuenta bancaria)!
-	*/
-	
-	public String getTipo() 
+	public String getTipoMovimiento() 
 	{
-		return tipo;
+		return tipoMovimiento;
 	}
 
-	public void setTipo(String tipo) 
+	public void setTipoMovimiento(String tipo) 
 	{
-		this.tipo = tipo;
+		this.tipoMovimiento = tipo;
 	}
 	
 
@@ -90,6 +63,9 @@ public class Movimiento
 	{
 		this.cantidad = cantidad;
 	}
+	
+	
+	
 
 	
 }

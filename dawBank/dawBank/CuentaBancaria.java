@@ -13,6 +13,11 @@ public class CuentaBancaria
 	double dineroIngresado;
 	double dineroRetirado;
 	
+	private String ID;
+	private String fecha;
+	private String tipoMovimiento;
+	private double cantidad;
+	
 	private int numMaxMovimientos = 100;
 	private Movimiento[] mov;
 	
@@ -46,7 +51,7 @@ public class CuentaBancaria
 	}
     
     
-    private boolean validacionIBAN(String IBAN)
+    public boolean validacionIBAN()
     {
     	Boolean isFormatOk = false;
 		String formato = "[A-Z](2) [0-9](22)";
@@ -76,7 +81,7 @@ public class CuentaBancaria
 	}
 	
 	
-    private boolean validacionTitular(String titular)
+    public boolean validacionTitular()
     {
     	Boolean isFormatOk = false;
 		String formato = "([A-Z][a-zA-Z])+([a-zA-z]+([ '-][a-zA-Z]+)*))";
@@ -169,7 +174,19 @@ public class CuentaBancaria
 			}
 			
 		return saldo;
-	}	
+	}
+	
+	
+	public String mostrarMovimientos()
+	
+	{
+		String movi = ("ID: " + this.ID + ", Fecha: " + this.fecha + ", Tipo(ingreso o retirada): " + this.tipoMovimiento 
+				+ ", Cantidad: " + this.cantidad);
+		
+		return movi;
+	}
+	
+	
 
 	
 	

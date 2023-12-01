@@ -36,7 +36,7 @@ public class Movimiento
 		return fecha;
 	}
 
-	public void setFecha(String Fecha)
+	private void setFecha(String Fecha)
 	{
 		this.fecha = fecha;
 	}
@@ -47,7 +47,7 @@ public class Movimiento
 		return tipoMovimiento;
 	}
 
-	public void setTipoMovimiento(String tipo) 
+	private void setTipoMovimiento(String tipo) 
 	{
 		this.tipoMovimiento = tipo;
 	}
@@ -59,12 +59,17 @@ public class Movimiento
 		return cantidad;
 	}
 
-	public void setCantidad(int cantidad) 
+	public void setCantidad(double cantidad) 
 	{
 		this.cantidad = cantidad;
 	}
 	
-	
+	public void mostrarInfoMovimiento()
+	{
+		String datosmov;
+		datosmov = ( this.fecha + ", " + this.tipoMovimiento + ", " + this.cantidad);
+		System.out.println("Sus movimientos recientes son: " + datosmov);
+	}
 	
 	
 

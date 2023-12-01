@@ -18,10 +18,11 @@ public class CuentaBancaria
 	private String tipoMovimiento;
 	private double cantidad;
 	
-	private int numMaxMovimientos = 100;
 	private Movimiento[] Movimientoarray;
 	
 	private int numMovimActuales = 0;
+	
+	private String MostrarMovimientos;
 	
 	
 	public CuentaBancaria(String IBAN, String titular)
@@ -46,7 +47,7 @@ public class CuentaBancaria
 	}
     
    
-    public boolean validacionIBAN()
+   /* public boolean validacionIBAN()
     {
     	Boolean isFormatOk = false;
 		String formato = ("[A-Z]{2}[0-9]{22}");
@@ -60,10 +61,7 @@ public class CuentaBancaria
 
 		return isFormatOk;
     }
-    /**Pattern formato = Pattern.compile("[A-Z]{2}[0-9]{22}"); //ES1234567891234567890000 EJEMPLO IBAN
-        formato.matcher(IBAN);
-        Matcher matcher = formato.matcher(IBAN);
-        */
+   */
     
 	
 	
@@ -79,22 +77,6 @@ public class CuentaBancaria
 		this.titular = titular;
 	}
 	
-	
-   /* public boolean validacionTitular()
-    {
-    	Boolean isFormatOk = false;
-		String formato = ("^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$");
-		Pattern pattern = Pattern.compile(formato);
-		Matcher matcher = pattern.matcher(titular);
-		if(matcher.matches())
-		{
-			this.titular = titular;
-			isFormatOk = true;
-		}
-
-		return isFormatOk;
-    }
-    */
     
 	
 	public double getSaldo() 
@@ -175,22 +157,24 @@ public class CuentaBancaria
 		return saldo;
 	}
 	
+	public String getMostrarMovimientos()
+	{
+		return MostrarMovimientos;
+	}
 	
 	public void MostrarMovimientos()
 	{
-		String movi = ("ID: " + this.ID + ", Fecha: " + this.fecha + ", Tipo(ingreso o retirada): " + this.tipoMovimiento 
-				+ ", Cantidad: " + this.cantidad);
-		
-		if(this.numMovimActuales > 0)
+		for(int i = 0; i < Movimientoarray.length; i++)
 		{
-			movi = movi + "\nMovimientos: \n";
-			for(int i = 0; i < numMovimActuales; i++)
+			if(this.Movimientoarray[i] != null)
 			{
-				
-			}
-		}
-	
-	}
+					this.Movimientoarray[i].mostrarInfoMovimiento();
+			}//if
+		}//for
+		
+		
+	}//metod 
+
 	
 
 	

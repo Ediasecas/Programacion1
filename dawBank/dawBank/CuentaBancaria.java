@@ -19,14 +19,16 @@ public class CuentaBancaria
 	private double cantidad;
 	
 	private int numMaxMovimientos = 100;
-	private Movimiento[] Movimiento;
+	private Movimiento[] Movimientoarray;
+	
+	private int numMovimActuales = 0;
 	
 	
 	public CuentaBancaria(String IBAN, String titular)
 	{
 		this.IBAN = IBAN;
 		this.titular = titular;
-		this.Movimiento = new Movimiento [100];
+		this.Movimientoarray = new Movimiento [100];
 		
 	}
 	
@@ -43,11 +45,11 @@ public class CuentaBancaria
 
 	}
     
-   /* 
+   
     public boolean validacionIBAN()
     {
     	Boolean isFormatOk = false;
-		String formato = "[A-Z](2) [0-9](22)";
+		String formato = ("[A-Z]{2}[0-9]{22}");
 		Pattern pattern = Pattern.compile(formato);
 		Matcher matcher = pattern.matcher(IBAN);
 		if(matcher.matches())
@@ -58,7 +60,10 @@ public class CuentaBancaria
 
 		return isFormatOk;
     }
-    */
+    /**Pattern formato = Pattern.compile("[A-Z]{2}[0-9]{22}"); //ES1234567891234567890000 EJEMPLO IBAN
+        formato.matcher(IBAN);
+        Matcher matcher = formato.matcher(IBAN);
+        */
     
 	
 	
@@ -78,7 +83,7 @@ public class CuentaBancaria
    /* public boolean validacionTitular()
     {
     	Boolean isFormatOk = false;
-		String formato = "([A-Z] [a-zA-Z]) + ([a-zA-z]+([ '-][a-zA-Z]+)*)";
+		String formato = ("^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$");
 		Pattern pattern = Pattern.compile(formato);
 		Matcher matcher = pattern.matcher(titular);
 		if(matcher.matches())
@@ -171,15 +176,21 @@ public class CuentaBancaria
 	}
 	
 	
-	public void mostrarMovimientos()
-	
+	public void MostrarMovimientos()
 	{
-		for(int i = 0; i < mov.length; i++)
+		String movi = ("ID: " + this.ID + ", Fecha: " + this.fecha + ", Tipo(ingreso o retirada): " + this.tipoMovimiento 
+				+ ", Cantidad: " + this.cantidad);
+		
+		if(this.numMovimActuales > 0)
 		{
-			ºººº
+			movi = movi + "\nMovimientos: \n";
+			for(int i = 0; i < numMovimActuales; i++)
+			{
+				
+			}
 		}
-	}
 	
+	}
 	
 
 	

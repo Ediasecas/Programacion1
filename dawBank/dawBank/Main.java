@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class Main
 
 {
-
+	
 	public static void main(String[] args) {
 	
 		Scanner entrada = new Scanner(System.in);
@@ -19,23 +19,51 @@ public class Main
 		
 		System.out.println("Inserte el IBAN en su formato correcto");
         String IBAN = entrada.nextLine();
-        Pattern formato = Pattern.compile("[A-Z]{2}[0-9]{22}");
+       
+        if(cuenta.validacionIBAN() == true)
+		{
+			System.out.println("Se ha introducido el IBAN correctamente");
+		}
+        
+    		else
+    		{
+    			System.out.println("No se introdujo el IBAN correctamente");
+    		}
+        
+      
+        /*Pattern formato = Pattern.compile("[A-Z]{2}[0-9]{22}"); //ES1234567891234567890000 EJEMPLO IBAN
         formato.matcher(IBAN);
-        Matcher mat = formato.matcher(IBAN);
+        Matcher matcher = formato.matcher(IBAN);
 		
-		while(!mat.matches())
+		while(!matcher.matches())
 			{
 		        	 
 		     System.out.println("IBAN no válido. Introduzcalo de nuevo:");
 		     IBAN = entrada.nextLine();
-		     mat = formato.matcher(IBAN);
+		     matcher = formato.matcher(IBAN);
 		           
 		    }
-		 
+		*/
          
         System.out.println("Inserte el titular de la cuenta en su formato correcto");
  		String titular = entrada.nextLine();
-		    
+ 	
+ 		
+ 		/*
+ 		Pattern formato2 = Pattern.compile ("^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$");//Expresion: Nombre apellido1 apellido2
+ 		formato2.matcher(titular);
+		Matcher matcher2 = formato.matcher(titular);
+		
+		while(!matcher2.matches())
+		{
+	        	 
+	     System.out.println("Titular no válido. Introduzcalo de nuevo:");
+	     IBAN = entrada.nextLine();
+	     matcher2 = formato2.matcher(titular);
+	           
+	    }
+		*/
+	
 
 		boolean salir = false;
 		int seleccionar;
@@ -116,7 +144,7 @@ public class Main
 				
 				case 7:
 					
-					System.out.println("Movimientos " + cuenta.mostrarMovimientos());
+					
 					
 				break;	
 					

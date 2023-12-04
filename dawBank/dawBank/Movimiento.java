@@ -64,11 +64,13 @@ public class Movimiento
 		this.cantidad = cantidad;
 	}
 	
-	public void mostrarInfoMovimiento()
+	public String mostrarInfoMovimiento()
 	{
 		String datosmov;
 		datosmov = ( this.fecha + ", " + this.tipoMovimiento + ", " + this.cantidad);
 		System.out.println("Sus movimientos recientes son: " + datosmov);
+		
+		return datosmov;
 	}
 	
 	

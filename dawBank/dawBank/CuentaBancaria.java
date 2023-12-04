@@ -137,22 +137,23 @@ public class CuentaBancaria
 				saldo = (saldo - dineroRetirado);
 				System.out.println("Usted ha retirado la cantidad de " + dineroRetirado +"€");
 				
-				if(saldo < 0)
-				{
-					saldo = (saldo - dineroRetirado);
-					System.out.println("Su saldo es negativo");
-				}
-				
-				if(saldo < -50)
-				{
-					System.out.println("¡ERROR! No puede tener un saldo de -50€ en la cuenta");
-				}
 			}
-			
 			else
 			{
 				System.out.println("¡ERROR! Solo se puede retirar valores superiores a cero");
 			}
+			
+			if(saldo < 0)
+			{
+				saldo = (saldo - dineroRetirado);
+				System.out.println("Su saldo es negativo");
+			}
+			
+			if(saldo < -50)
+			{
+				System.out.println("¡ERROR! No puede tener un saldo de -50€ en la cuenta");
+			}
+		
 			
 		return saldo;
 	}
@@ -170,6 +171,7 @@ public class CuentaBancaria
 			{
 					this.Movimientoarray[i].mostrarInfoMovimiento();
 			}//if
+			
 		}//for
 		
 		

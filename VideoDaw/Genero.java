@@ -1,0 +1,4 @@
+
+public enum Genero {
+	ACCION, AVENTURAS, CIENCIAFICCION, COMEDIA, TERROR
+}

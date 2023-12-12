@@ -11,7 +11,7 @@ public class Cliente {
 	 private LocalDate FechaBaja;
 	 private Pelicula[] PeliculasAlquiladas;
 	 private int numPeliActual = 0;
-	private boolean clienteRegistrado = false;
+	 private boolean clienteRegistrado = false;
 	 
 	 
 	 public Cliente(String DNI, String Nombre, String NumSocio, String Direccion, LocalDate FechaNacimiento,
@@ -28,14 +28,19 @@ public class Cliente {
 
 
 
+	public Cliente(String dNI2, String nombre2, String direccion2, String fechaNacimiento2, int contadorSocio) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public String getDNI() {
 		return DNI;
 	}
 
 
-
 	public void setDNI(String dNI) {
-		DNI = dNI;
+		this.DNI = dNI;
 	}
 
 
@@ -45,9 +50,8 @@ public class Cliente {
 	}
 
 
-
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.Nombre = nombre;
 	}
 
 
@@ -57,9 +61,8 @@ public class Cliente {
 	}
 
 
-
 	public void setNumSocio(String numSocio) {
-		NumSocio = numSocio;
+		this.NumSocio = numSocio;
 	}
 
 
@@ -69,9 +72,8 @@ public class Cliente {
 	}
 
 
-
 	public void setDireccion(String direccion) {
-		Direccion = direccion;
+		this.Direccion = direccion;
 	}
 
 
@@ -81,9 +83,8 @@ public class Cliente {
 	}
 
 
-
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
-		FechaNacimiento = fechaNacimiento;
+		this.FechaNacimiento = fechaNacimiento;
 	}
 
 
@@ -93,9 +94,8 @@ public class Cliente {
 	}
 
 
-
 	public void setFechaBaja(LocalDate fechaBaja) {
-		FechaBaja = fechaBaja;
+		this.FechaBaja = fechaBaja;
 	}
 
 
@@ -105,9 +105,8 @@ public class Cliente {
 	}
 
 
-
 	public void setPeliculasAlquiladas(Pelicula[] peliculasAlquiladas) {
-		PeliculasAlquiladas = peliculasAlquiladas;
+		this.PeliculasAlquiladas = peliculasAlquiladas;
 	}
 
 
@@ -122,22 +121,67 @@ public class Cliente {
 		this.numPeliActual = numPeliActual;
 	}
 	 
+	
+	
+	public boolean getClienteRegistrado() {
+		return clienteRegistrado;
+	}
+
+
+	public void setClienteRegistrado(boolean clienteRegistrado) {
+		this.clienteRegistrado = clienteRegistrado;
+	}
+	
+	
+	
 	public void MostrarInfoCliente (){
-		String Clientt = "DNI" + this.DNI;
+		String Clientt = "DNI" + this.DNI + " Nombre" + this.Nombre + "Numero de Socio " +
+				this.NumSocio + " Direccion " + this.Direccion + " Fecha de nacimiento " 
+				+ this.FechaNacimiento ;
+		
 		System.out.println(Clientt);
 	}
 	
+	
+
 	public void mostrarPeliculasAlquiladas(){
 		System.out.println("Hay " + this.PeliculasAlquiladas + " peliculas alquiladas en total a dia de hoy");
 	}
 	 
+	
+	
 	public void darBajaCliente() {
 		this.clienteRegistrado = false;
 		this.FechaBaja = LocalDate.now();
 	}
 	 
 	 
-	 
+	public void alquilarPelicula(Pelicula p)
+	{
+		if(p != null) 
+		{
+			if(this.numPeliActual < this.PeliculasAlquiladas.length)
+			{
+				this.PeliculasAlquiladas[this.numPeliActual] = p;
+				this.numPeliActual ++;
+			}
+			
+			
+		}
+	}
+	
+	public void devolverPelícula(Pelicula p) {
+		if(p != null) 
+		{
+			if(this.numPeliActual < this.PeliculasAlquiladas.length)
+			{
+				this.PeliculasAlquiladas[this.numPeliActual] = p;
+				this.numPeliActual--;
+			}
+			
+			
+		}
+	}
 	 
 	 
 	 

@@ -9,8 +9,13 @@ public class Pelicula {
 	private LocalDate FechaRegistro;
 	private LocalDate FechaBaja;
 	private LocalDate FechaAlquiler;
+	private LocalDate FechaDevolverPeli;
+	
+	
+
+
 	private boolean IsAlquilada = false;
-	private boolean Pelidispo;
+	private boolean Pelidispo = false;
 	
 	
 	public Pelicula(String Cod, String Titulo, Genero genero, LocalDate FechaRegistro, LocalDate FechaBaja,
@@ -23,8 +28,17 @@ public class Pelicula {
 		this.FechaBaja = FechaBaja;
 		this.FechaAlquiler = FechaAlquiler;
 		this.IsAlquilada = false;
-		this.Pelidispo = false;
-		
+		this.Pelidispo = false;	
+	}
+	
+	
+	public Pelicula (String Cod, String Titulo, LocalDate FechaRegistro,  Genero genero)
+	{
+		this.Cod = Cod;
+		this.Titulo = Titulo;
+		this.FechaRegistro = FechaRegistro;
+		this.genero = genero;
+		this.IsAlquilada = false;
 	}
 
 
@@ -34,19 +48,21 @@ public class Pelicula {
 
 
 	public void setCod(String cod) {
-		Cod = cod;
+		this.Cod = cod;
 	}
 
 
+	
 	public String getTitulo() {
 		return Titulo;
 	}
 
 
 	public void setTitulo(String titulo) {
-		Titulo = titulo;
+		this.Titulo = titulo;
 	}
 
+	
 
 	public Genero getGenero() {
 		return genero;
@@ -58,6 +74,7 @@ public class Pelicula {
 	}
 
 
+	
 	public LocalDate getFechaRegistro() {
 		return FechaRegistro;
 	}
@@ -67,6 +84,7 @@ public class Pelicula {
 		FechaRegistro = fechaRegistro;
 	}
 
+	
 
 	public LocalDate getFechaBaja() {
 		return FechaBaja;
@@ -74,9 +92,10 @@ public class Pelicula {
 
 
 	public void setFechaBaja(LocalDate fechaBaja) {
-		FechaBaja = fechaBaja;
+		this.FechaBaja = fechaBaja;
 	}
 
+	
 
 	public LocalDate getFechaAlquiler() {
 		return FechaAlquiler;
@@ -84,24 +103,55 @@ public class Pelicula {
 
 
 	public void setFechaAlquiler(LocalDate fechaAlquiler) {
-		FechaAlquiler = fechaAlquiler;
+		this.FechaAlquiler = fechaAlquiler;
+	}
+
+	
+	
+	public LocalDate getFechaDevolverPeli() {
+		return FechaDevolverPeli;
 	}
 
 
+	public void setFechaDevolverPeli(LocalDate localDate) {
+		this.FechaDevolverPeli = localDate;
+	}
+
+	
+	
 	public boolean isIsAlquilada() {
 		return IsAlquilada;
 	}
 
 
 	public void setIsAlquilada(boolean isAlquilada) {
-		IsAlquilada = isAlquilada;
+		this.IsAlquilada = isAlquilada;
 	}
+	
+	public boolean getIsAlquilada() {
+		return Pelidispo;
+	}
+	
+	
+	public boolean isPelidispo() {
+		return Pelidispo;
+	}
+
+
+	public void setPelidispo(boolean pelidispo) {
+		this.Pelidispo = pelidispo;
+	}
+
+
 	
 	public void mostrarInfoPeli()
 	{
-		String peli = "Cod" + this.Cod;
+		String peli = "Cod" + this.Cod + "titulo" + this.Titulo + "genero" + this.genero + "fecha alquiler" 
+				+ this.FechaAlquiler + "esta alquilada¿?" + this.IsAlquilada ;
 		System.out.println(peli);
 	}
+	
+	
 	
 	public void darBajaPeli()
 	{

@@ -128,6 +128,12 @@ public class Main
 					
 					System.out.println("Usted ha ingresado la cantidad de " + ingreso + "€");
 					
+					
+					
+					cuenta.ingreso(ingreso);
+					
+					
+					
 				break;	
 				
 				

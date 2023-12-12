@@ -1,6 +1,7 @@
 package dawBank;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -105,20 +106,25 @@ public class CuentaBancaria
 	
 	
 	
-	public double ingreso()
+	public double ingreso(double cantidad)
 	{ 
-			if (dineroIngresado > 0)
+			if (cantidad > 0)
 			{
-				saldo = (dineroIngresado + saldo);
-				System.out.println("Usted ha ingresado la cantidad de " + dineroIngresado +"€");
+				saldo = (cantidad + saldo);
+				System.out.println("Usted ha ingresado la cantidad de " + cantidad +"€");
 				
-				if(dineroIngresado > 3000)
+				if(cantidad > 3000)
 				{
-					saldo = (dineroIngresado + saldo);
+					saldo = (cantidad + saldo);
 					System.out.println("Usted ha ingresado la cantidad de " + dineroIngresado 
 							+ "€, debido a que esta cantidad supera los 3000€, notificar a Hacienda");
 					
 				}
+				
+				
+				Movimiento m = new Movimiento("ID0",LocalDate.now().toString(), "Ingreso", cantidad);
+				this.Movimientoarray[numMovimActuales] = m;
+				numMovimActuales++;
 			}
 			
 			else
@@ -130,12 +136,16 @@ public class CuentaBancaria
 	}
 	
 	
-	public double retirada()
+	public double retirada(double cantidad)
 	{ 
-			if (dineroRetirado > 0)
+			if (cantidad > 0)
 			{
-				saldo = (saldo - dineroRetirado);
+				saldo = (saldo - cantidad);
 				System.out.println("Usted ha retirado la cantidad de " + dineroRetirado +"€");
+				
+				Movimiento m = new Movimiento("ID0",LocalDate.now().toString(), "Ingreso", cantidad);
+				this.Movimientoarray[numMovimActuales] = m;
+				numMovimActuales++;
 				
 			}
 			else
@@ -145,7 +155,7 @@ public class CuentaBancaria
 			
 			if(saldo < 0)
 			{
-				saldo = (saldo - dineroRetirado);
+				saldo = (saldo - cantidad);
 				System.out.println("Su saldo es negativo");
 			}
 			

@@ -143,6 +143,7 @@ public class Main
 					retirada = entrada.nextDouble();
 					
 					System.out.println("Usted ha retirado la cantidad de " + retirada + "€");
+					cuenta.ingreso(retirada);
 					
 				break;	
 					

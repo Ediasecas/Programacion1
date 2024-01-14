@@ -19,7 +19,8 @@ public class mainGestionVideoDaw {
 		Cliente client = null;
 		
 		do {
-			System.out.println("");
+			
+			System.out.println("Seleccione una opcion del menu del escogiendola por su num (1-8)");
     		System.out.println("1. Crear y registrar VideoClub en la franquicia.");
     		System.out.println("2. Registrar película en videoclub. ");
     		System.out.println("3. Crear y registrar cliente en videoclub.");
@@ -30,12 +31,13 @@ public class mainGestionVideoDaw {
     		System.out.println("8. Salir.");
     		seleccion = entrada.nextInt();
     		switch (seleccion) {
+    		
     		case 1:
-    			System.out.println("");
-    			System.out.println("Introduzca información sobre su videoclub: ");
+    			System.out.println("Introduzca los datos sobre su videoclub: ");
     			System.out.println("Nombre: ");
     			String nombre =  entrada.next();
-    			System.out.println("CIF: ");
+    			
+    			System.out.println("CIF: (EJ--->A12345678)");
     			String CIF = entrada.next();
     			Pattern pat = Pattern.compile("[A-Z]{1}[0-9]{8}");
     	        pat.matcher(CIF);
@@ -45,18 +47,21 @@ public class mainGestionVideoDaw {
     	            CIF = entrada.next();
     	            mat = pat.matcher(CIF);
     	        }
+    	        
     	        System.out.println("Direccion: ");
     	        String Direccion2 = entrada.next();
+    	        
     	        LocalDate FechaAlta =  LocalDate.now();
     	        System.out.println("Fecha de alta del videoclub: " + FechaAlta);
+    	        
     			e1 = new VideoDaw (CIF, Direccion2, FechaAlta);
     	        break;    
     	        
     		case 2:
-    			System.out.println("");
+    			
     			System.out.println("Nombre de la película: ");
     			String Titulo = entrada.next();
-    			System.out.println("Codigo identificador de la película: ");
+    			System.out.println("Codigo identificador de la película:(EJ ---> D0001)");
     			String Cod = entrada.next();
     			Pattern pat1 = Pattern.compile("[A-Z]{1}[0-9]{4}");
     	        pat1.matcher(Cod);
@@ -104,86 +109,94 @@ public class mainGestionVideoDaw {
     			System.out.println("");
     			System.out.println("Nombre del cliente: ");
     			String Nombre = entrada.next();
-    			System.out.println("DNI: ");
+    			System.out.println("DNI:(EJ --> 72178507R) ");
     			String DNI = entrada.next();    			
-    			Pattern pat4 = Pattern.compile("[A-Z]{8}[0-9]{1}");
+    			Pattern pat4 = Pattern.compile("[0-9]{8}[A-Z]{1}");
     	        pat4.matcher(DNI);
     	        Matcher mat4 = pat4.matcher(DNI);
     	        while(!mat4.matches()){
-    	            System.out.println("DNI no válido. Introduzcalo de nuevo:");
+    	            System.out.println("DNI no válido. Introduzcalo de nuevo:(EJ --> 72178507R)");
     	            DNI = entrada.next();
     	            mat4 = pat4.matcher(DNI);
     	        }
     			System.out.println("Direccion: ");
-    			String Direccion = entrada.next();
+    			String Direccioncliente = entrada.next();
     			System.out.println("Fecha de nacimiento: ");
     			String FechaNacimiento = entrada.next();
     			int contadorSocio = 0;
-    			client = new Cliente (DNI, Nombre, Direccion, FechaNacimiento, contadorSocio);
+    			client = new Cliente (DNI, Nombre, Direccioncliente, FechaNacimiento, contadorSocio);
     			e1.registrarCliente(client);
     			break;
     			
     			
     		case 4:
     			System.out.println("");
-    			System.out.println("Código de la película: ");
+    			System.out.println("Código de la película: (EJ ---> D0001) ");
     			String Codigo = entrada.next();
-    			Pattern pat3 = Pattern.compile("[A-Z]{8}[0-9]{1}");
+    			Pattern pat3 = Pattern.compile("[A-Z]{1}[0-9]{4}");
     	        pat3.matcher(Codigo);
     	        Matcher mat3 = pat3.matcher(Codigo);
     	        while(!mat3.matches()){
-    	            System.out.println("Código no válido. Introduzcalo de nuevo:");
+    	            System.out.println("Código no válido. Introduzcalo de nuevo: (EJ ---> D0001)  ");
     	            Codigo = entrada.next();
     	            mat1 = pat3.matcher(Codigo);
     	        }
     	        e1.alquilarPelicula(peli, client);
     	        System.out.println("¡Película Alquilada!");
+    	        break;
+    	        
+    	        
     		case 5:
     			System.out.println("");
-    			System.out.println("Código de la película a devolver: ");
+    			System.out.println("Código de la película a devolver:  (EJ ---> D0001) ");
     			String Codigo2 = entrada.next();
-    			Pattern pat5 = Pattern.compile("[A-Z]{8}[0-9]{1}");
+    			Pattern pat5 = Pattern.compile("[A-Z]{1}[0-9]{4}");
     	        pat5.matcher(Codigo2);
     	        Matcher mat5 = pat5.matcher(Codigo2);
     	        while(!mat5.matches()){
-    	            System.out.println("Código no válido. Introduzcalo de nuevo:");
+    	            System.out.println("Código no válido. Introduzcalo de nuevo: (EJ ---> D0001) ");
     	            Codigo2 = entrada.next();
     	            mat5 = pat5.matcher(Codigo2);
     	        }
     	        e1.devolverPelicula(peli, client);
     	        System.out.println("¡Película devuelta!");
+    	        break;
+    	        
     	        
     		case 6:
     			System.out.println("");
-    			System.out.println("Escriba el DNI de la persona a la cual quieras dar de baja");
+    			System.out.println("Escriba el DNI de la persona a la cual quieras dar de baja (EJ --> 72178507R) ");
     			String dni = entrada.next();
-    			Pattern pat2 = Pattern.compile("[A-Z]{8}[0-9]{1}");
+    			Pattern pat2 = Pattern.compile("[0-9]{8}[A-Z]{1}");
     	        pat2.matcher(dni);
     	        Matcher mat2 = pat2.matcher(dni);
     	        while(!mat2.matches()){
-    	            System.out.println("DNI no válido. Introduzcalo de nuevo:");
+    	            System.out.println("DNI no válido. Introduzcalo de nuevo: (EJ --> 72178507R) ");
     	            dni = entrada.next();
     	            mat2 = pat2.matcher(dni);
     	        }
     			Cliente c_borrar = e1.obtenerDni(dni);
     			e1.darBajaCliente(c_borrar);
-    			//
+    			break;
+    			
+    			
     		case 7:
     			System.out.println("");
-    			System.out.println("Escriba el Código de la persona a la cual quieras dar de baja");
+    			System.out.println("Escriba el código de la pelicula que desea  dar de baja (EJ ---> D0001) ");
     			String Codigo1 = entrada.next();
-    			Pattern pat6 = Pattern.compile("[A-Z]{8}[0-9]{1}");
+    			Pattern pat6 = Pattern.compile("[A-Z]{1}[0-9]{4}");
     	        pat6.matcher(Codigo1);
     	        Matcher mat6 = pat6.matcher(Codigo1);
     	        while(!mat6.matches()){
-    	            System.out.println("Código no válido. Introduzcalo de nuevo:");
+    	            System.out.println("Código no válido. Introduzcalo de nuevo: (EJ ---> D0001)");
     	            Codigo1 = entrada.next();
     	            mat6 = pat6.matcher(Codigo1);
     	        }
     	        Pelicula p_borrar = e1.obtenerCodigo(Codigo1);
     	        e1.darBajaPelicula(p_borrar);
-    
+    	        break;
     			
+    	        
     		}//selección
 		
 		}while(!salir);

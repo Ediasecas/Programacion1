@@ -5,14 +5,16 @@ public class Planetas extends Astros {
 	private String distSol;
 	private String orbitSol;
 	private boolean satelites;
+	public Satelites[] Satelites;
 	
 	
-	public Planetas(String radEcuat, String rotEje, String masa, String tempMedia, String gravedad,String distSol, String orbitSol, boolean satelites) 
+	public Planetas(String radEcuat, String rotEje, String masa, String tempMedia, String gravedad, String distSol, String orbitSol, boolean satelites) 
 	{
 		super(radEcuat, rotEje, masa, tempMedia, gravedad);
 		this.distSol = distSol;
 		this.orbitSol = orbitSol;
 		this.satelites = satelites;
+		this.Satelites = new Satelites[6];
 	}
 
 	
@@ -54,11 +56,37 @@ public class Planetas extends Astros {
 		this.satelites = satelites;
 	}
 	
-	public void mostrarInfoAstro()
+	
+	
+	public Satelites[] getSatelites() 
 	{
-		String infoAstro = "radEcuat" + super.radEcuat + "rotEje" + super.rotEje + "tempMedia" + super.tempMedia 
-				+ "gravedad" + super.gravedad;
+	    return Satelites;
 	}
+
+	
+	public void setSatelites(Satelites[] Satelites)
+	{
+	    Satelites = Satelites;
+	}
+
+	
+	
+	public String mostrarInfoAstro()
+	{
+		
+		String info = super.mostrarInfoAstro();
+		info += ", Distancia al Sol: " + this.distSol + ", Orbita al Sol: " + this.orbitSol + ", ¿Tiene Satelites? " + this.satelites;
+		return info;
+	}
+
+
+
+	@Override
+	public void info(Astros a) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	
 	

@@ -10,8 +10,9 @@ public abstract class Astros {
 	private String gravedad;
 	
 	
-	public Astros(String radEcuat, String rotEje, String masa, String tempMedia, String gravedad)
+	public Astros( String radEcuat, String rotEje, String masa, String tempMedia, String gravedad)
 	{
+		super();
 		this.radEcuat = radEcuat;
 		this.rotEje = rotEje;
 		this.masa = masa;
@@ -85,7 +86,16 @@ public abstract class Astros {
 	}
 	
 	
-	public abstract void mostrarInfoAstro();
+	public abstract void info (Astros a);
+	
+	public String mostrarInfoAstro()
+	{
+		String info = "";
+		info =  "Radio Ecuatorial: " + this.radEcuat + "km, " + "Rotacion sobre su Eje: " + this.rotEje + "horas en dar una vuelta sobre si mismo, " + "Masa: " + this.masa +"kg, "+ "Temperatura Media: " + this.tempMedia +"ºC, "
+					+ "gravedad: " + this.gravedad + "m/s^2";
+		return info;
+	}
 
+	
 	
 }//clase Astros

@@ -6,110 +6,109 @@ import java.util.regex.Pattern;
 public class VideoDaw{
 
 	private String CIF;
-	private String Direccion2;
-	private LocalDate FechaAlta;
+	private String direccion2;
+	private LocalDate fechaAlta;
 	private Pelicula[] PeliculasRegistradas;
 	private Cliente [] ClientesRegistrados;
-	private int NumPelisRegistradas;
-	private int NumClientesRegistrados;
+	private int numPelisRegistradas;
+	private int numClientesRegistrados;
 	private final int maxPeliculas = 100;
 	private final int maxClientes = 100;
 
 	
-	public VideoDaw(String CIF, String Direccion2, LocalDate FechaAlta){
+	public VideoDaw(String CIF, String direccion2, LocalDate fechaAlta){
 		
 		this.CIF = CIF;
-		this.Direccion2 = Direccion2;
-		this.FechaAlta = LocalDate.now();
+		this.direccion2 = direccion2;
+		this.fechaAlta = LocalDate.now();
 		this.ClientesRegistrados = new Cliente[100];
 		this.PeliculasRegistradas = new Pelicula[this.maxPeliculas];
 	}
 	
 	
-	public String getCIF() {
+	public String getCIF()
+	{
 		return CIF;
 	}
 	
 	
-	public void setCIF(String cIF) {
+	public void setCIF(String cIF)
+	{
 		CIF = cIF;
 	}
 	
-	/*private boolean CIFValidator(String CIF)
-	{
-		boolean isFormatOk = false;
-		String regex = "^(?:ISBN(?:-10)?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$)[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$";
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(CIF);
-		if(matcher.matches())
-		{
-			this.CIF = CIF ;
-			isFormatOk = true;
-		}
 
-		return isFormatOk;
-	}
-	*/
-	public String getDireccion2() {
-		return Direccion2;
+	public String getDireccion2() 
+	{
+		return direccion2;
 	}
 	
 	
-	public void setDireccion2(String direccion2) {
-		Direccion2 = direccion2;
+	public void setDireccion2(String direccion2) 
+	{
+		direccion2 = direccion2;
 	}
 	
 	
-	public LocalDate getFechaAlta() {
-		return FechaAlta;
+	public LocalDate getFechaAlta() 
+	{
+		return fechaAlta;
 	}
 	
 	
-	public void setFechaAlta(LocalDate fechaAlta) {
-		FechaAlta = fechaAlta;
+	public void setFechaAlta(LocalDate fechaAlta) 
+	{
+		fechaAlta = fechaAlta;
 	}
 	
 	
-	public Pelicula[] getPelículasRegistradas() {
-		return PeliculasRegistradas;
-	}
-	
-	
-	public void setPelículasRegistradas(Pelicula[] películasRegistradas) {
-		PeliculasRegistradas = películasRegistradas;
-	}
-	
-	
-	public Cliente[] getClientesRegistrados() {
-		return ClientesRegistrados;
-	}
-	
-	
-	public void setClientesRegistrados(Cliente[] clientesRegistrados) {
-		ClientesRegistrados = clientesRegistrados;
-	}
 		
-	public void mostrarInfoVideoClub(){
-		String infovid = "CID" + this.CIF + "Direccion" + this.Direccion2 + "Fecha de Alta de peli" + this.FechaAlta;
-		System.out.println(infovid);
+	public int getNumClientesRegistrados() {
+		return numClientesRegistrados;
+	}
+
+
+	public void setNumClientesRegistrados(int numPelisRegistradas) {
+		this.numClientesRegistrados = numClientesRegistrados;
+	}
+
+	
+	
+	public int getNumPelisRegistradas() {
+		return numPelisRegistradas;
+	}
+
+
+	public void setNumPelisRegistradas(int numPelisRegistradas) {
+		this.numPelisRegistradas = numPelisRegistradas;
+	}
+
+
+	
+	public String mostrarInfoVideoClub()
+	{
+		String infovid = "CID" + this.CIF + "Direccion" + this.direccion2 + "Fecha de Alta de peli" + this.fechaAlta;
+		return infovid;
 	}
 	
-	public void mostrarClientesRegistrados(){
+	public String mostrarClientesRegistrados()
+	{
 		String clientRegistrados = "Clientes" + this.ClientesRegistrados;
-		System.out.println(clientRegistrados);
+		return clientRegistrados;
 	}
 	
 	
 	
-	public void registrarPelicula(Pelicula Pelicula) {
-		if (Pelicula != null && this.NumPelisRegistradas < this.maxPeliculas)
+	public void registrarPelicula(Pelicula Pelicula)
+	{
+		if (Pelicula != null && this.numPelisRegistradas < this.maxPeliculas)
 		{ 
-			if (this.NumPelisRegistradas == 0)
+			if (this.numPelisRegistradas == 0)
 			{
 				this.PeliculasRegistradas[0] = Pelicula; 
-				this.NumPelisRegistradas ++;
+				this.numPelisRegistradas ++;
 			}
-			else if (this.NumPelisRegistradas > 0)
+			else if (this.numPelisRegistradas > 0)
 			{
 				boolean peliculaYaExistente = false; 
 				for (int i = 0; i < this.PeliculasRegistradas.length; i++)
@@ -128,17 +127,18 @@ public class VideoDaw{
 			
 	}
 	
-	public void registrarCliente(Cliente cliente) {
-		if(cliente != null && this.NumClientesRegistrados < this.maxClientes)
+	public void registrarCliente(Cliente cliente) 
+	{
+		if(cliente != null && this.numClientesRegistrados < this.maxClientes)
 		{
-			if(this.NumClientesRegistrados == 0)
+			if(this.numClientesRegistrados == 0)
 			{
 				this.ClientesRegistrados[0] = cliente;
-				this.NumClientesRegistrados ++;
+				this.numClientesRegistrados ++;
 			}
 		}//1er if
 		
-		else if (this.NumClientesRegistrados > 0)
+		else if (this.numClientesRegistrados > 0)
 		{
 			boolean clienteRepetido = false;
 			for(int i = 0 ; i < this.ClientesRegistrados.length; i++)
@@ -156,7 +156,8 @@ public class VideoDaw{
 			
 	}//metodo Registrar Cliente	
 	
-	public Cliente obtenerDni(String DNI) {
+	public Cliente obtenerDni(String DNI)
+	{
 		Cliente c = null;
 		for(int i = 0; i < this.ClientesRegistrados.length; i++)
 		{
@@ -170,12 +171,14 @@ public class VideoDaw{
 	}
 		
 	
-	public void darBajaCliente(Cliente c) {
+	public void darBajaCliente(Cliente c) 
+	{
 		c.darBajaCliente();
 				
 	}
 	
-	public Pelicula obtenerCodigo (String Codigo) {
+	public Pelicula obtenerCodigo (String Codigo) 
+	{
 		Pelicula p = null;
 		for (int i = 0; i < this.PeliculasRegistradas.length; i++) {
 			if (this.PeliculasRegistradas[i].getCod().equalsIgnoreCase(Codigo)) {
@@ -188,13 +191,15 @@ public class VideoDaw{
 	
 	
 	
-	public void darBajaPelicula(Pelicula p) {
+	public void darBajaPelicula(Pelicula p) 
+	{
 		p.darBajaPeli(); 
 	}
 	
 	
 	
-	public void alquilarPelicula(Pelicula p, Cliente c) {
+	public void alquilarPelicula(Pelicula p, Cliente c) 
+	{
 		
 		
 		for (int i = 0; i < this.PeliculasRegistradas.length; i++) {//recorrer array películas
@@ -210,7 +215,10 @@ public class VideoDaw{
 		}
 	}
 	
-	public void devolverPelicula(Pelicula p, Cliente c) {
+	
+	
+	public void devolverPelicula(Pelicula p, Cliente c) 
+	{
 		
 		for (int i = 0; i < this.PeliculasRegistradas.length; i++) {
 			if (this.PeliculasRegistradas[i].getCod().equalsIgnoreCase(p.getCod()) && this.PeliculasRegistradas[i].getIsAlquilada() == true && this.ClientesRegistrados[i].getClienteRegistrado() == true) {

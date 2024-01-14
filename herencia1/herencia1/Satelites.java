@@ -55,7 +55,20 @@ public class Satelites extends Astros{
 		this.planetPertenece = planetPertenece;
 	}
 	
-	
+	public String mostrarInfoAstro()
+	{
+		String info = super.mostrarInfoAstro();
+		info += ", Distancia al Planeta: " + this.distPlanet + ", Orbita al Planeta: " + this.orbitPlanetaria + ", Planeta al que pertenece: " + this.planetPertenece;
+		return info;
+	}
+
+
+
+	@Override
+	public void info(Astros a) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

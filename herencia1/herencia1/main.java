@@ -10,40 +10,78 @@ public class main {
 	{
 		
 		System.out.println("Sistema solar");
-		Scanner entrada = new Scanner(System.in);
+		
 
-		Astros[] AstrosColeccion;
+		Planetas Tierra , Marte, Jupiter, Pluton;
+		Satelites Luna, Fobos, Deimos, Ganimedes, Caronte;
 		
-		int seleccionar;
-		boolean salir = false;
+		Tierra = new Planetas("6371 ", "24 ", "10^24 ", "17 ", "9.8 ",
+                "1.5*10^7 km", "365 días", true);
 		
-		do {
-			
-    		System.out.println("1. Astros. ");
-    		System.out.println("2. Planetas. ");
-    		System.out.println("3. Satelites.");
-    		System.out.println("4. Salir. ");
+		Marte = new Planetas("3389 ", "25 ", "6.39*10^23 ", "-50 ", "3.71 ",
+                "2.28*10^9 km", "687 días", true);
+		
+		Jupiter = new Planetas("69911  ", "10 ", "1.89*10^27 ", "-121 ", "24.79 ",
+                "7.78*10^9 km", "4343 días", true);
     		
-    		seleccionar = entrada.nextInt();
-			 
-			switch(seleccionar)
-			{
-			
-				case 1:
-					System.out.println("Informacion del astro");
-					
-					
-				break;
-			
-			}
-    		
-    		
-		}while(!salir);
+		Pluton = new Planetas("1188 ", "6.4 ", "1.3*10^22 ", "204 ", "0.62 ",
+                "5916*10^7 km", "247 años", true);
 		
 		
+		Luna = new Satelites("1737  ", "655.68 ", "7.35*10^22 kgs", "121 ", "1.62 ",
+                "3.844*10^5 km", "", "La Tierra");
+		
+		Fobos = new Satelites("11267 ", "9.12 ", "1.072×10^16 kg", "-40 ", "0.0057 ", 
+				"9377km", "", "Marte");
+		
+		Deimos = new Satelites("23460 ", "29.52 ", "2.44*10^15 kg", "-40 ", "0.003 ", 
+				"23460km", "", "Marte");
+		
+		Ganimedes = new Satelites("2634 ", "169 ", "1.48*10^23 kg", "-193 ", "1.428 ", 
+				"1070*10^7km", "", "Jupiter");
+		
+		Caronte = new Satelites("635 ", "153 ", "1.52*10^21 kg", "-223 ", "0.288 ", 
+				"18*10^3km", "", "Pluton");
 		
 		
+		System.out.println("___________________________________________________________________________________________________________________________________________________________________________________________________");
 		
+		System.out.println("La Tierra");
+		System.out.println(Tierra.mostrarInfoAstro());
+		System.out.println("___________________________________________________________________________________________________________________________________________________________________________________________________");
+		
+		System.out.println("Marte");
+		System.out.println(Marte.mostrarInfoAstro());
+		System.out.println("___________________________________________________________________________________________________________________________________________________________________________________________________");
+		
+		System.out.println("Jupiter");
+		System.out.println(Jupiter.mostrarInfoAstro());
+		System.out.println("___________________________________________________________________________________________________________________________________________________________________________________________________");
+		
+		System.out.println("Pluton");
+		System.out.println(Pluton.mostrarInfoAstro());
+		System.out.println("___________________________________________________________________________________________________________________________________________________________________________________________________");
+	
+		
+		System.out.println("Luna");
+		System.out.println(Luna.mostrarInfoAstro());
+		System.out.println("___________________________________________________________________________________________________________________________________________________________________________________________________");
+		
+		System.out.println("Fobos");
+		System.out.println(Fobos.mostrarInfoAstro());
+		System.out.println("___________________________________________________________________________________________________________________________________________________________________________________________________");
+		
+		System.out.println("Deimos");
+		System.out.println(Deimos.mostrarInfoAstro());
+		System.out.println("___________________________________________________________________________________________________________________________________________________________________________________________________");
+		
+		System.out.println("Ganimedes");
+		System.out.println(Ganimedes.mostrarInfoAstro());
+		System.out.println("___________________________________________________________________________________________________________________________________________________________________________________________________");
+	
+		System.out.println("Caronte");
+		System.out.println(Caronte.mostrarInfoAstro());
+		System.out.println("___________________________________________________________________________________________________________________________________________________________________________________________________");
 		
 	}
 

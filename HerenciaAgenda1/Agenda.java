@@ -1,78 +1,29 @@
 
-public class Agenda extends Contacto
+public class Agenda 
 {
-
-		private boolean añadirContacto;
-		private boolean eliminarContacto;
-		private boolean existeContacto;
-		private int buscaContacto;
+		
+		private String nombreAgenda;
 	    private Contacto[] agendaContactos;
+	   
 	    private int contactosRegistrados;
-	    
+	    private int numMaxContactos;
 
 	    
 	    
-	    public Agenda(String nombre, String numTelf, boolean añadirContacto, boolean eliminarContacto, boolean existeContacto, int buscaContacto) 
+	    public Agenda(String nombreAgenda, int contactosRegistrados, int numMaxContactros) 
 	    {
-			super(nombre, numTelf);
-			this.añadirContacto = añadirContacto;
-			this.eliminarContacto = eliminarContacto;
-			this.existeContacto = existeContacto;
-			this.buscaContacto = buscaContacto;
-			this.agendaContactos = new Contacto [100];
+			this.nombreAgenda = nombreAgenda;
+			this.numMaxContactos = numMaxContactos;
+			this.agendaContactos = new Contacto [this.numMaxContactos];
+			
 		}
 
-	    
-	    
-		public boolean isAñadirContacto() 
+	   
+
+		public Agenda(int numMaxContactos) 
 		{
-			return añadirContacto;
-		}
-
-
-		public void setAñadirContacto(boolean añadirContacto) 
-		{
-			this.añadirContacto = añadirContacto;
-		}
-
-
-
-		public boolean isEliminarContacto() 
-		{
-			return eliminarContacto;
-		}
-
-
-		public void setEliminarContacto(boolean eliminarContacto) 
-		{
-			this.eliminarContacto = eliminarContacto;
-		}
-
-
-
-		public boolean isExisteContacto() 
-		{
-			return existeContacto;
-		}
-
-
-
-		public void setExisteContacto(boolean existeContacto) 
-		{
-			this.existeContacto = existeContacto;
-		}
-
-
-
-		public int getBuscaContacto()
-		{
-			return buscaContacto;
-		}
-
-
-		public void setBuscaContacto(int buscaContacto) 
-		{
-			this.buscaContacto = buscaContacto;
+			this.numMaxContactos = numMaxContactos;
+			this.agendaContactos = new Contacto[this.numMaxContactos];
 		}
 
 
@@ -101,38 +52,96 @@ public class Agenda extends Contacto
 		}
 
 
-		
-		
-	    public void añadirContacto(Contacto c) //       AÑADIR CONTACTO
+	    private String getNombre() 
 	    {
-	    	if (c != null && contactosRegistrados < agendaContactos.length)
-	    	{
-	    		this.agendaContactos[contactosRegistrados++] = c;
-	    	}
-	    } 
+				// TODO Auto-generated method stub
+				return null;
+		}
+		
 	    
+	    public boolean añadirContacto(Contacto c) //       AÑADIR CONTACTO
+		{
+			boolean contactoInsertado = false;
+			if(this.agendaContactos != null)
+			{
+				if(this.contactosRegistrados >= 0 && this.contactosRegistrados < this.numMaxContactos)
+				{
+					boolean existeContacto = false;
+					for(int i = 0; i< this.contactosRegistrados; i++)
+					{
+						if(this.agendaContactos[i].getNombre().equalsIgnoreCase(c.getNombre()))
+						{
+							existeContacto = true;
+							System.out.println("He pasado por aqui: Contacto repetido");
+						}
+					}
+					
+					if(existeContacto == false)
+					{
+						agendaContactos[contactosRegistrados] = c;
+						contactosRegistrados ++;
+						contactoInsertado = true;
+					}
+					else 
+					{
+						System.out.println("El contacto ya existe en la coleccion");
+					}
+
+				}
+				else 
+				{
+					System.out.println("La agenda de contactos  esta completa");
+				}
+			}
+			
+			return contactoInsertado;
+		}
+	    
+	   
 	    
 
-	    public void borrarContacto(String Nombre) //     BORRAR CONTACTO
-	    {
-	        int restar = -1;
-	        for (int i = 0; i < agendaContactos.length; i++)
-	        {
-	            if (agendaContactos[i].getNombre().equals(Nombre))
-	            {
-	                restar = i;
-	            }
-	            else
-	            {
-	            	System.out.println("No se pudo eliminar");
-	            }
-	        }
-
-	    }
+		public boolean eliminarContacto () // BORRAR CONTACTO
+		{
+			boolean isRemoved = false;
+			if(this.agendaContactos != null)
+			{
+				if(this.contactosRegistrados > 0)
+				{
+					int pos = -1;
+					for(int i =0; i< this.contactosRegistrados; i++)
+					{
+						if(this.agendaContactos[i] != null)
+						{
+							if(this.agendaContactos[i].getNombre().equalsIgnoreCase(contacto.getNombre()))
+							{
+								this.agendaContactos[i] = null;
+								isRemoved = true;
+								contactosRegistrados --;
+								pos = i;
+							}
+						}
+					}
+					
+					for(int i = pos; i < this.agendaContactos.length-1; i++)
+					{
+						this.agendaContactos[i] = this.agendaContactos[i+1];
+					}
+					this.agendaContactos[agendaContactos.length-1] = null;
+					
+					
+				}
+				else 
+				{
+					System.out.println("La coleccion esta vacia");
+				}	
+			}
+			
+			return isRemoved;
+		}
 	    
 	    
 	    
-	    public void existeContacto (String Nombre) //   EXISTE CONTACTO
+	    public void existeContacto (String Nombre) //   ¿EXISTE CONTACTO?
 		{
 		    boolean existe = false;
 
@@ -147,14 +156,16 @@ public class Agenda extends Contacto
 		        }
 		    }
 
-		    if (!existe) {
-		        System.out.println("Animal no encontrado.");
+		    if (!existe)
+		    {
+		        System.out.println("Contacto no encontrado.");
 		    }
 		}
 	     
 	
 		
-	    public void mostrarTodosDatos() //      MOSTRAR DATOS AGENDA
+
+		public void mostrarTodosDatos() //      MOSTRAR DATOS AGENDA
 	    {
 	        for (int i = 0; i < contactosRegistrados; i++)
 	        {
@@ -167,7 +178,27 @@ public class Agenda extends Contacto
 	    
 	   
 	   
-	    
+	    public void posicionContacto (String Nombre) //   POSICION CONTACTO
+		{
+		    boolean existe = false;
+
+		    for(int i = 0; i < contactosRegistrados; i++)
+		    {
+		        if(agendaContactos[i] != null && agendaContactos[i].getNombre().equals(Nombre))
+		        {		            
+		            existe = true;
+		            System.out.println("El contacto: " + this.getNombre() + ", existe y se encuentra en la posicion " + i);
+		            
+		            break; 		          
+		        }
+		    }
+
+		    if (!existe)
+		    {
+		        System.out.println("Contacto no encontrado.");
+		    }
+		}
+	     
 	    
 	  
 

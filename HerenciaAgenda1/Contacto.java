@@ -1,5 +1,5 @@
 
-public abstract class Contacto 
+public  class Contacto 
 {
 
 	private String nombre;
@@ -8,7 +8,7 @@ public abstract class Contacto
 	
 	public Contacto(String nombre, String numTelf) 
 	{
-		super();
+		
 		this.nombre = nombre;
 		this.numTelf = numTelf;
 	}

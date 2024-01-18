@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class ProgramaAgenda {
@@ -31,13 +32,15 @@ public class ProgramaAgenda {
             switch (seleccion) {
 
                 case 1:
+                	entrada.nextLine();
+                	
                 	
                 	System.out.println("Introduce los datos del contacto a añadir:");
                 	
                 	System.out.println("Introduce el nombre del contacto a añadir");
                 	String nombreContacto = entrada.nextLine();
                 	
-                	System.out.println("Introduce el num  del contacto a añadir");
+                	System.out.println("Introduce el numero  del contacto a añadir");
                 	String numContacto = entrada.nextLine();
 
                 	Contacto nuevoContacto = new Contacto(nombreContacto, numContacto);
@@ -46,51 +49,38 @@ public class ProgramaAgenda {
 
                
                 case 2:
+                	entrada.nextLine();
                    
                     System.out.println("Ingrese el nombre del contacto que desea eliminar:");
                     String nombreContactoEliminar = entrada.nextLine();
-                   
-                    agendaNueva.eliminarContacto();
+                    agendaNueva.eliminarContacto(nombreContactoEliminar);
+                    
                     break;
 
                 case 3:
+                	entrada.nextLine();
                 	
                 	System.out.println("Introduzca el contacto a buscar en la agenda");
                 	String buscarContacto = entrada.nextLine();
+                	agendaNueva.existeContacto(buscarContacto);
                 	
-                	i.getInventario().mostrarTodosDatos();
-
                 	break;
 
                 case 4:
-                    
                 	entrada.nextLine();
-                    System.out.println("Ingrese los detalles del nuevo animal:");
-                   
-                    System.out.print("Nombre: ");
-                    String nuevoNombre = entrada.nextLine();
-                    System.out.print("Edad: ");
-                    String nuevaEdad = entrada.nextLine();
-                    System.out.print("Estado: ");
-                    String nuevoEstado = entrada.nextLine();
-                    System.out.print("Fecha de nacimiento: ");
-                    String nuevaFechaNacimiento = entrada.nextLine();
-                    
-                    Mascotas nuevaMascota = new Perro(nuevoNombre, nuevaEdad, nuevoEstado, nuevaFechaNacimiento, "Raza", false);
-                   
-                    i.getInventario().añadirMascota(nuevaMascota);
-                    System.out.println("Nuevo animal añadido correctamente.");
+                	
+                    System.out.println("Mostando por pantalla toda la agenda");
+                    agendaNueva.mostrarTodosDatos();
                     
                     break;
 
                 case 5:
-                    
                 	entrada.nextLine();
-                    System.out.println("Ingrese el nombre del animal a eliminar:");
-                    String nombreEliminar = entrada.nextLine();
-                    i.getInventario().borrarAnimal(nombreEliminar);
-                    System.out.println("Animal eliminado correctamente.");
-                   
+                	
+                    System.out.println("Ingrese el nombre del contacto a buscar en la agenda para saber su posicion:");
+                    String contactoBuscar = entrada.nextLine();
+                    agendaNueva.posicionContacto(contactoBuscar);
+  
                     break;
 
 
@@ -101,7 +91,7 @@ public class ProgramaAgenda {
 
                     break;
 
-            }// selección
+            }
 
         } while (!salir);
 		
@@ -111,3 +101,4 @@ public class ProgramaAgenda {
 	
 	
 }
+

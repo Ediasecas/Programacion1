@@ -1,4 +1,5 @@
 
+
 public  class Contacto 
 {
 
@@ -44,7 +45,7 @@ public  class Contacto
 	public String mostrarInfoContacto()
 	{
 		String info = "";
-		info =  "Nombre de la mascota: " + this.nombre + ", " + "Numero telefono: " + this.numTelf ;
+		info =  "Nombre del contacto: "+ this.nombre + ", "+ "Número telefono: " + this.numTelf ;
 		return info;
 	}
 	

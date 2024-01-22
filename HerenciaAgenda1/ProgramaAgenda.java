@@ -24,7 +24,7 @@ public class ProgramaAgenda {
             System.out.println("2. Eliminar Contacto. ");
             System.out.println("3. ¿Existe Contacto?.");
             System.out.println("4. Mostrar agenda ");
-            System.out.println("5. Buscar Contacto por nombre.");
+            System.out.println("5. Buscar Posicion del Contacto .");
             System.out.println("6. Salir del programa. ");
             seleccion = entrada.nextInt();
 

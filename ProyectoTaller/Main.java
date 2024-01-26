@@ -92,6 +92,8 @@ public class Main {
 
                break;
     				
+    			case 4:
+    				System.out.println("cambios");
     				
     		}//Switch		
 		

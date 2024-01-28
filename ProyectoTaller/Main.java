@@ -43,7 +43,7 @@ public class Main {
     				System.out.println("Introduzca la marca del coche a añadir");
     				String marcaCoche  = entrada.nextLine();
     				
-    				System.out.println("Introduzca la matricula del coche a añadir");
+    				System.out.println("Introduzca la matrícula del coche a añadir");
     				String matriculaCoche  = entrada.nextLine();
     				
     				Pattern pat = Pattern.compile("[0-9]{4}[A-Z]{3}");
@@ -56,9 +56,14 @@ public class Main {
         	            mat = pat.matcher(matriculaCoche);
         	        }
         	        
-        	        Map<String,Coche> parejas = new HashMap<String,Coche>();
         	        
-        	        parejas.put(matriculaCoche, new Coche(colorCoche, marcaCoche));
+        	        if (t.anadirCoche(matriculaCoche, new Coche(colorCoche, marcaCoche)))
+        	        {
+                        System.out.println("Coche con matrícula" + matriculaCoche + "añadido correctamente.");
+                    } else 
+                    {
+                        System.out.println("Ya existe un coche con la misma matrícula en la colección.");
+                    }
         	        
     				
     			break;
@@ -67,7 +72,7 @@ public class Main {
     			case 2: 
     				entrada.nextLine();
     				
-    				System.out.println("Inttroduzca la matricula del coche a eliminar del taller");
+    				System.out.println("Introduzca la matricula del coche a eliminar del taller");
     				String matriculaCocheEliminar  = entrada.nextLine();
     				
     				Pattern pat1 = Pattern.compile("[0-9]{4}[A-Z]{3}");
@@ -80,7 +85,14 @@ public class Main {
         	            mat1 = pat1.matcher(matriculaCocheEliminar);
         	        }
     				
-        	       t.eliminarCoche(matriculaCocheEliminar);
+        	        
+        	        if (t.eliminarCoche(matriculaCocheEliminar)) 
+        	        {
+        	            System.out.println("Coche con matrícula " + matriculaCocheEliminar + " eliminado correctamente.");
+        	        } else 
+        	        {
+        	            System.out.println("No se pudo eliminar el coche.");
+        	        }
         	       
     			break;
 		
@@ -92,17 +104,22 @@ public class Main {
 
                break;
     				
-    			case 4:
-    				System.out.println("cambios, ahora cambios desde github");
+    	
     				
     		}//Switch		
 		
 		
 		}while(!salir);
 		
+		System.out.println("\n \n ");
+		
 		 t.MostrarMatriculas();
-		 t.MostrarCoche();
+		 System.out.println("\n  ");
 		 
+		 t.MostrarCoche();
+		 System.out.println("\n  ");
+		 
+		 t.MostrarTaller();
 		
 		
 	}//do while

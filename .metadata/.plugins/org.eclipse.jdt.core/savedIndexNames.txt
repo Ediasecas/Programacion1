@@ -1,10 +1,3 @@
-INDEX VERSION 1.134+C:\Users\daw1\Documents\GitHub\Programacion1\.metadata\.plugins\org.eclipse.jdt.core
-791036165.index
-2625692494.index
-2779629487.index
-2037639050.index
-2616106234.index
+INDEX VERSION 1.134+C:\Users\edied\eclipse-workspace\Programacion1\.metadata\.plugins\org.eclipse.jdt.core
 1865797976.index
-3374218862.index
-3766138416.index
-2393563997.index
+2200290196.index

@@ -11,7 +11,10 @@ public class Taller
 	private int numMaxContactos;
 	
 	
-	
+	 public Taller() 
+	 {
+	        this.parejas = new HashMap<String,Coche>();
+	 }
 
 	public Coche[] getCochestaller() 
 	{
@@ -37,7 +40,8 @@ public class Taller
 	}
 
 
-	public int getNumMaxContactos() {
+	public int getNumMaxContactos() 
+	{
 		return numMaxContactos;
 	}
 
@@ -49,10 +53,27 @@ public class Taller
 
 	
 
-	Map<String,Coche> parejas = new HashMap<String,Coche>();
-	 
+	Map<String,Coche> parejas;
 	
-	public boolean eliminarCoche(String matricula)
+	 
+	public boolean anadirCoche(String matricula, Coche coche)  //metodo añadir Coche
+	{
+        
+        if (!parejas.containsKey(matricula)) 
+        {
+            parejas.put(matricula, coche);
+            return true; 
+        }
+        
+        else 
+        {
+            return false; 
+        }
+    }
+	
+	
+	
+	public boolean eliminarCoche(String matricula) //metodo eliminar Coche
 	{
 		if(matricula != null)
 		{
@@ -67,31 +88,42 @@ public class Taller
 		return false;
 	}
 	
-	public void MostrarMatriculas() 
+	
+	
+	public void MostrarMatriculas()  //metodo Mostrar Matricula
 	{
+		System.out.println("Visualización de Matriculas:");
 		Set <String> claves = parejas.keySet();
-		for (String key : claves) 
+		for (String matricula : claves) 
 		{
-			System.out.println(key + " - " + parejas.get(key));
+			System.out.println(matricula);
 		}
 	}
 
 	
 	
-	public void MostrarCoche()
+	public void MostrarCoche() //metodo Mostrar Coche
 	{
-		Collection<Coche> claves1 = parejas.values();
-		for (Coche values : claves1) 
+		 System.out.println("Visualización de Coches:");
+		Collection<Coche> coches = parejas.values();
+		for (Coche coche : coches) 
 		{
-			System.out.println( values + " - " + parejas.get(values));
+			System.out.println("Color: " + coche.getColor() + ", Marca: " + coche.getMarca());
 		}
 	}
 	
 	
-	public void MostrarTaller()
+	
+	public void MostrarTaller() //metodo Mostrar Taller
 	{
-		
-	}
+        System.out.println("Visualización del Taller:");
+        for (Map.Entry<String, Coche> entry : parejas.entrySet()) 
+        {
+            String matricula = entry.getKey();
+            Coche coche = entry.getValue();
+            System.out.println(" COCHES;\n Matrícula: " + matricula + ", Color: " + coche.getColor() + ", Marca: " + coche.getMarca());
+        }
+    }
 	
 	
 	

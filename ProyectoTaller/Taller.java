@@ -8,7 +8,7 @@ public class Taller
 	
 	private Coche[] cochestaller;
 	private int cochesRegistrados;
-	private int numMaxContactos;
+	private int numMaxCoches;
 	
 	
 	 public Taller() 
@@ -40,15 +40,15 @@ public class Taller
 	}
 
 
-	public int getNumMaxContactos() 
+	public int getNumMaxCoches() 
 	{
-		return numMaxContactos;
+		return numMaxCoches;
 	}
 
 
-	public void setNumMaxContactos(int numMaxContactos) 
+	public void setNumMaxCoches(int NumMaxCoches) 
 	{
-		this.numMaxContactos = numMaxContactos;
+		this.numMaxCoches = NumMaxCoches;
 	}
 
 	

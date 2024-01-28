@@ -111,15 +111,16 @@ public class Main {
 		
 		}while(!salir);
 		
+		
 		System.out.println("\n \n ");
 		
-		 t.MostrarMatriculas();
-		 System.out.println("\n  ");
+		t.MostrarMatriculas();
+		System.out.println("\n  ");
+		
+		t.MostrarCoche();
+		System.out.println("\n  ");
 		 
-		 t.MostrarCoche();
-		 System.out.println("\n  ");
-		 
-		 t.MostrarTaller();
+		t.MostrarTaller();
 		
 		
 	}//do while

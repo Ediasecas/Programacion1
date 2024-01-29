@@ -130,9 +130,10 @@ public class Agenda
 	
 	
 	
-	public int NumContactosAgenda()
+	public void NumContactosAgenda()
 	{
-	    return contactos.size();
+	    
+		 System.out.println(contactos.size());
 	}
 	
 }

@@ -1,5 +1,5 @@
 
-public class Coche implements Comparable
+public class Coche 
 {
 
 	
@@ -24,7 +24,8 @@ public class Coche implements Comparable
 	}
 
 
-	public void setColor(String color) {
+	public void setColor(String color) 
+	{
 		this.color = color;
 	}
 
@@ -43,8 +44,6 @@ public class Coche implements Comparable
 
 	
 
-
-
 	
 	@Override
 	public String toString() 
@@ -54,12 +53,7 @@ public class Coche implements Comparable
 	
 	
 
-	@Override
-	public int compareTo(Object o) 
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 	
 	
 	

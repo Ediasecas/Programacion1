@@ -14,7 +14,11 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+<<<<<<< HEAD
 			<item value="C:\Users\edied\eclipse-workspace\Programacion1\ProyectoTaller"/>
+=======
+			<item value="C:\Users\daw1\Documents\GitHub\Programacion1"/>
+>>>>>>> a6472cda41708d50187a5653aa8032bd7c1df49d
 			<item value="C:\Users\daw1\Documents\GitHub\Programacion1\ProyectoTaller"/>
 		</list>
 	</section>

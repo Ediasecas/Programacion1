@@ -151,14 +151,29 @@ public class Main {
 	    		break;
     	        
 	    		
+	    		
 	    		case 4:
     	        
+    	        a.MostrarAgenda();
+    	        
+    	        break;
+    	        
+    	        
+	    		case 5:
+	    			
+	    		System.out.println("Numero de contactos de mi agenda");
+    	        a.NumContactosAgenda();
+    	        
+    	        break;
     	        
     	        
     	        
-    	        
-    	        
-    	        
+	    		case 6:
+	    		
+    				System.out.println("Usted salió del programa correctamente");
+                    salir = true;
+                    
+                break;
     	        
     		
     		}//Switch

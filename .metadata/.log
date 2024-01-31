@@ -1246,3 +1246,96 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:43:39.969
+!MESSAGE Classpath changed for project: ExcepcionesActividad1
+
+!ENTRY org.eclipse.lsp4e 2 0 2024-01-31 09:52:45.167
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:65)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:53:06.026
+!MESSAGE Classpath changed for project: ProyectoTaller
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:53:12.355
+!MESSAGE Classpath changed for project: ProyecyoAgenda
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:53:16.690
+!MESSAGE Classpath changed for project: prueba
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:53:20.962
+!MESSAGE Classpath changed for project: VideoDaw
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:53:24.915
+!MESSAGE Classpath changed for project: herencia2
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:53:27.514
+!MESSAGE Classpath changed for project: HerenciaAgenda1
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:53:30.139
+!MESSAGE Classpath changed for project: main
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:53:33.059
+!MESSAGE Classpath changed for project: herencia1
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:53:35.361
+!MESSAGE Classpath changed for project: dawBank
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:57:02.190
+!MESSAGE Classpath changed for project: VideoDaw
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 09:57:51.986
+!MESSAGE Classpath changed for project: VideoDaw
+
+!ENTRY org.eclipse.lsp4e 2 0 2024-01-31 10:00:21.449
+!MESSAGE Unable to compute end of document
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.TreeLineTracker.fail(TreeLineTracker.java:1054)
+	at org.eclipse.jface.text.TreeLineTracker.lineByOffset(TreeLineTracker.java:268)
+	at org.eclipse.jface.text.TreeLineTracker.getLineNumberOfOffset(TreeLineTracker.java:1122)
+	at org.eclipse.jface.text.AbstractLineTracker.getLineNumberOfOffset(AbstractLineTracker.java:246)
+	at org.eclipse.jface.text.AbstractDocument.getLineOfOffset(AbstractDocument.java:863)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.getLineOfOffset(SynchronizableDocument.java:334)
+	at org.eclipse.lsp4e.LSPEclipseUtils.toPosition(LSPEclipseUtils.java:183)
+	at org.eclipse.lsp4e.operations.inlayhint.InlayHintProvider.provideCodeMinings(InlayHintProvider.java:44)
+	at org.eclipse.lsp4e.operations.inlayhint.InlayHintProvider.provideCodeMinings(InlayHintProvider.java:80)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.lambda$2(CodeMiningManager.java:189)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.getCodeMinings(CodeMiningManager.java:195)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.updateCodeMinings(CodeMiningManager.java:140)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.run(CodeMiningManager.java:129)
+	at org.eclipse.jface.text.source.SourceViewer.updateCodeMinings(SourceViewer.java:1333)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaCodeMiningReconciler.reconciled(JavaCodeMiningReconciler.java:51)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.reconciled(CompilationUnitEditor.java:1685)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconciled(JavaReconcilingStrategy.java:228)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconciled(JavaCompositeReconcilingStrategy.java:171)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:115)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 10:23:50.219
+!MESSAGE Classpath changed for project: VideoDaw
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 10:24:08.273
+!MESSAGE Classpath changed for project: VideoDaw
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 10:24:09.659
+!MESSAGE Classpath changed for project: dawBank
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-01-31 10:29:50.386
+!MESSAGE Classpath changed for project: dawBank

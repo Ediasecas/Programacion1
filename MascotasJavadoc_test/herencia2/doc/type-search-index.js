@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"herencia2","l":"Aves"},{"p":"herencia2","l":"Canario"},{"p":"herencia2","l":"Gato"},{"p":"herencia2","l":"inventarioClases"},{"p":"herencia2","l":"InventarioMain"},{"p":"herencia2","l":"Loro"},{"p":"herencia2","l":"Mascotas"},{"p":"herencia2","l":"Perro"}];updateSearchResults();

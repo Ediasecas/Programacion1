@@ -54,6 +54,8 @@ public class Main {
 	    		
 	    	        
 	    	        
+	    	       
+	    	        
 	    	        System.out.println("Introduzca el numero de telefono del contacto a añadir");
 					String numTelefonoContacto  = entrada.nextLine();
 					
@@ -69,10 +71,12 @@ public class Main {
 	    	        
 	    	        
 	    	        
+	    	      
+	    	        
 	    	        System.out.println("Introduzca el correo electronico del contacto a añadir");
 					String correoElContacto  = entrada.nextLine();
 					
-					Pattern pat3 = Pattern.compile("^[a-zA-Z0-9._-]+@[a-z]+\\\\.[a-z]{2,4}$");
+					Pattern pat3 = Pattern.compile("^[A-Z][a-zA-Z]*$");
 	    	        pat3.matcher(correoElContacto);
 	    	        Matcher mat3 = pat3.matcher(correoElContacto);
 	    	        while(!mat3.matches())
@@ -86,7 +90,7 @@ public class Main {
 	    	        
 	    	        if (a.anadirContacto(nombreContacto,new Contacto(nombreContacto, numTelefonoContacto, correoElContacto)))
 	    	        {
-	                    System.out.println("Contacto con nombre" + nombreContacto + "añadido correctamente.");
+	                    System.out.println("Contacto con nombre " + nombreContacto + " añadido correctamente.");
 	                } 
 	    	        
 	    	        else 
@@ -110,7 +114,7 @@ public class Main {
 	    			
 	    			if (contactEncontrado != null )
 		    	    {
-		                System.out.println("Contacto con nombre" + nombreBuscar + "encontrado en la agenda correctamente.");
+		                System.out.println("Contacto con nombre " + nombreBuscar + " encontrado en la agenda correctamente.");
 		            } 
 		    	        
 		    	    else 
@@ -123,7 +127,7 @@ public class Main {
 	    		
 	    		
 	    		case 3:
-	    		
+	    			entrada.nextLine();
 	    			System.out.println("Introduzca el nombre del contacto a eliminar de la agenda");
     				String nombreContactoEliminar  = entrada.nextLine();
     				

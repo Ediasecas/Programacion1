@@ -1,3 +1,5 @@
+package EJER3;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Ejercicio3 {

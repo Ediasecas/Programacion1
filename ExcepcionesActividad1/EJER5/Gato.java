@@ -7,6 +7,13 @@ public class Gato
 	private int edad;
 	
 	
+	 public Gato(String nombre, int edad) throws GatoException
+	 {
+	     this.setNombre(nombre);
+	     this.setEdad(edad);
+	 }
+	 
+	
 	public String getNombre() 
 	{
 		return nombre;
@@ -45,12 +52,14 @@ public class Gato
 		}
 	}
 
-	public Gato(String nombre, int edad) 
+	
+	public void imprimirDatosGato() 
 	{
-		super();
-		this.nombre = nombre;
-		this.edad = edad;
-	}	
+        System.out.println("Nombre del gato: " + this.nombre);
+        System.out.println("Edad del gato: " + this.edad);
+    }
+	
+
 	
 	
 	

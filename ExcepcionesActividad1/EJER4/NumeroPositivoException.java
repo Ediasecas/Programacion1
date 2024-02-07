@@ -5,7 +5,7 @@ public class NumeroPositivoException extends Exception
 {
 	private int numN;
 
-	public NumeroPositivoException(int numN1) 
+	public NumeroPositivoException(int numN) 
 	{
 		super();
 		this.numN = numN;

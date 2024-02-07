@@ -1,0 +1,184 @@
+import java.time.LocalDate;
+
+public class CuentaBancaria
+{
+	
+	private String IBAN;
+	private String titular;
+	
+	
+	private double saldo;
+	private int movimientos;
+	double dineroIngresado;
+	double dineroRetirado;
+	
+	
+	private Movimiento[] Movimientoarray;
+	
+	private int numMovimActuales = 0;
+	
+	private String MostrarMovimientos;
+	
+	
+	public CuentaBancaria(String IBAN, String titular) throws CuentaException
+	{
+		this.setIBAN(IBAN);
+		this.setTitular(titular);
+	}
+	
+	
+	public String getIBAN() 
+	{
+		return IBAN;
+	}
+	
+	
+    private void setIBAN(String iBAN)  throws CuentaException
+    {
+		this.IBAN = iBAN;
+
+	}
+    
+   
+   /* public boolean validacionIBAN()
+    {
+    	Boolean isFormatOk = false;
+		String formato = ("[A-Z]{2}[0-9]{22}");
+		Pattern pattern = Pattern.compile(formato);
+		Matcher matcher = pattern.matcher(IBAN);
+		if(matcher.matches())
+		{
+			this.IBAN = IBAN;
+			isFormatOk = true;
+		}
+
+		return isFormatOk;
+    }
+   */
+    
+	
+	
+    
+	public String getTitular() 
+	{
+		return titular;
+	}
+	
+	
+	public void setTitular(String titular) throws CuentaException
+	{
+		this.titular = titular;
+	}
+	
+    
+	
+	public double getSaldo() 
+	{
+		return saldo;
+	}
+	
+	
+	public void setSaldo(double saldo)
+	{
+		this.saldo = saldo;
+	}
+	
+	
+	
+	public int getMovimientos() 
+	{
+		return movimientos;
+	}
+	
+	
+	public void setMovimientos(int movimientos) 
+	{
+		this.movimientos = movimientos;
+	}
+	
+	
+	
+	public double ingreso(double cantidad)
+	{ 
+			if (cantidad > 0)
+			{
+				saldo = (cantidad + saldo);
+				System.out.println("Usted ha ingresado la cantidad de " + cantidad +"€");
+				
+				if(cantidad > 3000)
+				{
+					saldo = (cantidad + saldo);
+					System.out.println("Usted ha ingresado la cantidad de " + dineroIngresado 
+							+ "€, debido a que esta cantidad supera los 3000€, notificar a Hacienda");
+					
+				}
+				
+				
+				Movimiento m = new Movimiento("ID0",LocalDate.now().toString(), "Ingreso", cantidad);
+				this.Movimientoarray[numMovimActuales] = m;
+				numMovimActuales++;
+			}
+			
+			else
+			{
+				System.out.println("¡ERROR! Solo se puede ingresar valores superiores a cero");
+			}
+			
+		return saldo;
+	}
+	
+	
+	
+	public double retirada(double cantidad)
+	{ 
+			if (cantidad > 0)
+			{
+				saldo = (saldo - cantidad);
+				System.out.println("Usted ha retirado la cantidad de " + dineroRetirado +"€");
+				
+				Movimiento m = new Movimiento("ID0",LocalDate.now().toString(), "Ingreso", cantidad);
+				this.Movimientoarray[numMovimActuales] = m;
+				numMovimActuales++;
+				
+			}
+			else
+			{
+				System.out.println("¡ERROR! Solo se puede retirar valores superiores a cero");
+			}
+			
+			if(saldo < 0)
+			{
+				saldo = (saldo - cantidad);
+				System.out.println("Su saldo es negativo");
+			}
+			
+			if(saldo < -50)
+			{
+				System.out.println("¡ERROR! No puede tener un saldo de -50€ en la cuenta");
+			}
+		
+			
+		return saldo;
+	}
+	
+	public String getMostrarMovimientos()
+	{
+		return MostrarMovimientos;
+	}
+	
+	
+	
+	public void MostrarMovimientos()
+	{
+		for(int i = 0; i < Movimientoarray.length; i++)
+		{
+			if(this.Movimientoarray[i] != null)
+			{
+					this.Movimientoarray[i].mostrarInfoMovimiento();
+			}//if
+			
+		}//for
+		
+		
+	}// metod
+}

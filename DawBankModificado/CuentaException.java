@@ -1,20 +1,15 @@
 
-public class CuentaException extends Exception
+public class  CuentaException extends Exception
 {
 	private String IBAN;
-	private String titular;
+	private String cliente;
 	
 	
-	public CuentaException(String IBAN)
+	public CuentaException(String IBAN,String cliente)
 	{
+		
 		this.IBAN = IBAN;
+		this.cliente = cliente;
 	}
 	
-	public CuentaException(String titular)
-	{
-		this.titular = titular;
-	}
-	
-	
-
 }

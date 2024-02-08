@@ -1,14 +1,15 @@
-                                                                                                                                                                                                                                  
-public class Movimiento                                                                                                                                                                                                              
+import java.time.LocalDate;
+
+public class Movimiento implements Comparable                                                                                                                                                                                                             
 {                                                                                                                                                                                                                                    
                                                                                                                                                                                                                                      
 	private String ID;                                                                                                                                                                                                               
-	private String fecha;                                                                                                                                                                                                            
+	private LocalDate fecha;                                                                                                                                                                                                            
 	private String tipoMovimiento;                                                                                                                                                                                                   
 	private double cantidad;                                                                                                                                                                                                         
 	                                                                                                                                                                                                                                 
 	                                                                                                                                                                                                                                 
-	public Movimiento(String ID, String fecha, String tipo, double cantidad)                                                                                                                                                         
+	public Movimiento(String ID, LocalDate fecha, String tipo, double cantidad)                                                                                                                                                         
 	{                                                                                                                                                                                                                                
 		this.ID = ID;                                                                                                                                                                                                                
 		this.fecha = fecha;                                                                                                                                                                                                          
@@ -28,17 +29,18 @@ public class Movimiento
 	                                                                                                                                                                                                                                 
                                                                                                                                                                                                                                      
 	                                                                                                                                                                                                                                 
-	public String getFecha()                                                                                                                                                                                                         
+	public LocalDate getFecha()                                                                                                                                                                                                         
 	{                                                                                                                                                                                                                                
-		return fecha;                                                                                                                                                                                                                
+		return this.fecha;                                                                                                                                                                                                                
 	}                                                                                                                                                                                                                                
                                                                                                                                                                                                                                      
-	private void setFecha(String Fecha)                                                                                                                                                                                              
+	private void setFecha(LocalDate Fecha)                                                                                                                                                                                              
 	{                                                                                                                                                                                                                                
 		this.fecha = fecha;                                                                                                                                                                                                          
 	}                                                                                                                                                                                                                                
 	                                                                                                                                                                                                                                 
-	                                                                                                                                                                                                                                 
+	          
+	
 	public String getTipoMovimiento()                                                                                                                                                                                                
 	{                                                                                                                                                                                                                                
 		return tipoMovimiento;                                                                                                                                                                                                       
@@ -68,10 +70,28 @@ public class Movimiento
 		System.out.println("Sus movimientos recientes son: " + datosmov);                                                                                                                                                            
 		                                                                                                                                                                                                                             
 		return datosmov;                                                                                                                                                                                                             
+	}
+
+	
+	
+	@Override
+	public int compareTo(Object o) 
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+	
+	@Override
+	public String toString() {
+		return "Movimiento [ID=" + ID + ", fecha=" + fecha + ", tipoMovimiento=" + tipoMovimiento + ", cantidad="
+				+ cantidad + "]";
 	}                                                                                                                                                                                                                                
 	                                                                                                                                                                                                                                 
 	                                                                                                                                                                                                                                 
-                                                                                                                                                                                                                                     
+	
+	                                                                                                                                                                                                                                
 	                                                                                                                                                                                                                                 
 }                                                                                                                                                                                                                                    
                                                                                                                                                                                                                                      

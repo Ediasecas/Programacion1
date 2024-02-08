@@ -1,29 +1,35 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+
 
 public class CuentaBancaria
 {
 	
 	private String IBAN;
-	private String titular;
-	
+	private String cliente;
+	private TipoMovimiento tipomov;
 	
 	private double saldo;
 	private int movimientos;
 	double dineroIngresado;
 	double dineroRetirado;
 	
-	
-	private Movimiento[] Movimientoarray;
+
+	ArrayList<Movimiento> ColeccionMovimientos = new ArrayList<Movimiento>();
+	Iterator<Movimiento> itera = ColeccionMovimientos.iterator();
+	//private Movimiento[] Movimientoarray;
 	
 	private int numMovimActuales = 0;
 	
 	private String MostrarMovimientos;
 	
 	
-	public CuentaBancaria(String IBAN, String titular) throws CuentaException
+	public CuentaBancaria(String IBAN, String cliente) throws CuentaException
 	{
 		this.setIBAN(IBAN);
-		this.setTitular(titular);
+		this.setCliente(cliente);
 	}
 	
 	
@@ -33,41 +39,38 @@ public class CuentaBancaria
 	}
 	
 	
-    private void setIBAN(String iBAN)  throws CuentaException
+    private void setIBAN(String IBAN)  throws CuentaException
     {
-		this.IBAN = iBAN;
-
+    	if(IBAN.length()>22)
+    	{
+		this.IBAN = IBAN;
+    	}
+    	
+    	else
+    	{
+		throw new CuentaException(IBAN, cliente);
+    	}
 	}
     
    
-   /* public boolean validacionIBAN()
-    {
-    	Boolean isFormatOk = false;
-		String formato = ("[A-Z]{2}[0-9]{22}");
-		Pattern pattern = Pattern.compile(formato);
-		Matcher matcher = pattern.matcher(IBAN);
-		if(matcher.matches())
-		{
-			this.IBAN = IBAN;
-			isFormatOk = true;
-		}
-
-		return isFormatOk;
-    }
-   */
     
-	
-	
-    
-	public String getTitular() 
+	public String getCliente() 
 	{
-		return titular;
+		return cliente;
 	}
 	
 	
-	public void setTitular(String titular) throws CuentaException
+	public void setCliente(String cliente) throws CuentaException
 	{
-		this.titular = titular;
+		if(cliente.length() > 5) 
+		{
+			this.cliente = cliente;
+		}
+		
+		else
+		{
+		throw new CuentaException(IBAN, cliente);
+		}
 	}
 	
     
@@ -98,7 +101,7 @@ public class CuentaBancaria
 	
 	
 	
-	public double ingreso(double cantidad)
+	public double ingreso(double cantidad) throws AvisarHaciendaException
 	{ 
 			if (cantidad > 0)
 			{
@@ -110,13 +113,12 @@ public class CuentaBancaria
 					saldo = (cantidad + saldo);
 					System.out.println("Usted ha ingresado la cantidad de " + dineroIngresado 
 							+ "€, debido a que esta cantidad supera los 3000€, notificar a Hacienda");
+					throw new AvisarHaciendaException(cliente, IBAN, tipomov);
 					
 				}
 				
 				
-				Movimiento m = new Movimiento("ID0",LocalDate.now().toString(), "Ingreso", cantidad);
-				this.Movimientoarray[numMovimActuales] = m;
-				numMovimActuales++;
+			
 			}
 			
 			else
@@ -136,10 +138,7 @@ public class CuentaBancaria
 				saldo = (saldo - cantidad);
 				System.out.println("Usted ha retirado la cantidad de " + dineroRetirado +"€");
 				
-				Movimiento m = new Movimiento("ID0",LocalDate.now().toString(), "Ingreso", cantidad);
-				this.Movimientoarray[numMovimActuales] = m;
-				numMovimActuales++;
-				
+			
 			}
 			else
 			{
@@ -161,24 +160,17 @@ public class CuentaBancaria
 		return saldo;
 	}
 	
-	public String getMostrarMovimientos()
-	{
-		return MostrarMovimientos;
-	}
 	
 	
 	
 	public void MostrarMovimientos()
 	{
-		for(int i = 0; i < Movimientoarray.length; i++)
+		while (itera.hasNext()) //mostrar lista
 		{
-			if(this.Movimientoarray[i] != null)
-			{
-					this.Movimientoarray[i].mostrarInfoMovimiento();
-			}//if
-			
-		}//for
-		
-		
-	}// metod
-}
+		    Movimiento movimientoss = itera.next();
+		    System.out.println(movimientoss.toString());
+		}
+	}
+	
+	
+}//clase CuentaBancaria

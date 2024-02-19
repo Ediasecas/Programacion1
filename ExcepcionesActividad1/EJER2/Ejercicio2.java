@@ -12,7 +12,7 @@ public class Ejercicio2 {
 		int numB;
 		int operacion;
 
-		try 
+		try  
 		{
 			System.out.println("Introduzca un valor entero A");
 			numA = entrada.nextInt();

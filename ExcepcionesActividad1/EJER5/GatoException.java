@@ -6,6 +6,7 @@ public class GatoException extends Exception
 	private String nombre;
 	private int edad;
 	
+	
 	public GatoException(String nombre)
 	{
 		this.nombre = nombre;

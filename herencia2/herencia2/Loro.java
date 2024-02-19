@@ -54,7 +54,7 @@ public class Loro extends Aves
 
 	
 	/**
-	 * Metodo para mostrar info de la mascota(en este caso Loro), debido a la herencia se usara el mismo metodo que en "MASCOTAS" pero anadiendo en este caso la informacion de esta clase  "origen" y "habla" 
+	 * Metodo para mostrar info de la mascota(en este caso Loro), debido a la herencia se usara el mismo metodo que en "MASCOTAS" pero anadiendo en este caso la informacion de esta clase  "origen" y "habla", si es clase abstracta y metodos abstractos repetirlos en loas demas clases a no ser que sea clase asbtracta tambien. 
 	 */
 	public String mostrarInfoMascota()
 	{

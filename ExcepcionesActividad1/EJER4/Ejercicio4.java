@@ -13,7 +13,10 @@ public class Ejercicio4
 
 		try
 		{
+<<<<<<< HEAD
 			
+=======
+>>>>>>> 5a4d6068dbd530deba928a38c85bf10504f001c4
 				System.out.println("Introduce un numero");
 				num = entrada.nextInt();
 		
@@ -38,7 +41,7 @@ public class Ejercicio4
 	
 	
 	
-	public  static void imprimePositivo(int numero) throws NumeroNegativoException
+	public  static void imprimePositivo(int numero) throws NumeroNegativoException //al estar en la clase main,que es static, dicho metodo tendra que ser static tmb
 	{
 		if(numero > 0)
 		{

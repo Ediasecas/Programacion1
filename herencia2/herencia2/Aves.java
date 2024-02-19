@@ -48,5 +48,5 @@ public abstract class Aves extends Mascotas{
 		info += ", Tiene un pico: " + this.pico + ", " + "¿Vuela? " + this.pico;
 		return info;
 	}
-
+//al ser clase abstracta no esta obligado a implementar a repetir los metodos del paddre(MASCOTAS) solo los propios 
 }

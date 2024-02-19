@@ -30,7 +30,7 @@ public class Main {
 		while (itera.hasNext()) 
 		{
 			products1 = itera.next();
-			if(products1.getNombre().equals(Nombre))
+			if(products1.getNombre().equals(nombre))
 			{
 				itera.remove();
 			}

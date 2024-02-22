@@ -114,7 +114,6 @@ public class Empresa
 	
 	
 	
-	
 	public void registrarTrabajador(Trabajador trabajador) 
 	{
 	 
@@ -122,8 +121,24 @@ public class Empresa
 	    System.out.println("Trabajador registrado con éxito.");
 	  
 	}
+	
 		
-	  
+	/* 	public void registrarTrabajador(Trabajador trabajador)  //metodo de registrar trabjador bien hecho mirando el dni ,revisar
+	 	{
+			for(Trabajador trab : this.trabajadores) 
+			{
+				if(trab.getDNI().equalsIgnoreCase(trabajador.getDNI()))
+				{
+				 
+					System.out.println("Trabajador ya registrado , dni repetido.");
+				}
+				else {
+					trabajadores.add(trabajador); // Agrega al trabajador a la lista de trabajadores
+					System.out.println("Trabajador registrado con éxito.");
+				}
+			}
+	 	} 
+	*/
 	
 	public void registrarGerenteDep(GereneteDep gerenteDep) 
     {

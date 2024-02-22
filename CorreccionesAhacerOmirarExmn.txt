@@ -1,0 +1,6 @@
+-hasmap o linkedhasp map para qwue no se repita el dni a la hora de registrar mirar en casa
+
+-mirar excepcion a la hora de lanzarla en el main, poner en el setter la excepcion y despues en el constructor 	this.setAtributo(atributo)
+
+-mirar el metodo cambiado de registrar trabajador para ver q no se repite el DNI(Esta en gris en comentarios) para asi aplicarlo a registrarDirector y registrar GerenteDep
+

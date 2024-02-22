@@ -295,7 +295,7 @@ public class GestionMain {
 				case 2:
 						entrada.nextLine();
 						empresa.mostrarInformacionGeneral();
-						empresa.mostrarOrganigrma();
+						empresa.mostrarOrganigrama();
 						
 				break;	
 					
@@ -303,7 +303,7 @@ public class GestionMain {
 				case 3:
 						entrada.nextLine();
 						System.out.println("Numero de trabajadores actuales: " + empresa.numeroTrabajadoresActuales());
-						empresa.mostrarOrganigrma();
+						empresa.mostrarOrganigrama();
 						
 				break;	
 					

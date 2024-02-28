@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.134+C:\Users\daw1\Documents\GitHub\Programacion1\.metadata\.plugins\org.eclipse.jdt.core
 3616473508.index
 1087518442.index
@@ -15,3 +16,8 @@ INDEX VERSION 1.134+C:\Users\daw1\Documents\GitHub\Programacion1\.metadata\.plug
 955743084.index
 791036165.index
 3374218862.index
+=======
+INDEX VERSION 1.134+C:\Users\edied\eclipse-workspace\Programacion1\.metadata\.plugins\org.eclipse.jdt.core
+607549424.index
+1865797976.index
+>>>>>>> 50e74230e173e9b5a977d19b60adc0345c2d71f8

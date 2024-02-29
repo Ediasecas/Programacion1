@@ -27,7 +27,7 @@ public class Main {
 		do 
 		{
 			System.out.println("1.Registrar Producto");
-			System.out.println("2.Mostrar Producto existente");	
+			System.out.println("2.Mostrar Productos existente");	
 			System.out.println("3.Eliminar prducto por codigo");
 			System.out.println("4.Salir de la aplicacion");
 			System.out.println("Selceccione una opcion del menu escogiendola por su numero");
@@ -62,32 +62,15 @@ public class Main {
 					entrada = new Scanner(System.in);
 					
 					System.out.println("Mostrando productos");
-					LinkedList<String> misLineas = new LinkedList();
+					
 				
 					try(FileReader myreader =  new FileReader(myPath+myFile);
 						BufferedReader buffer = new BufferedReader(myreader);)
 						{
-							String line = null;
-							do
+							for(Producto p: miListaProductos)
 							{
-	
-								line = buffer.readLine();
-								if(line != null)
-								{
-									misLineas.add(line);
-									
-									String [] elementos = line.split(",");
-									String nom = elementos[0];
-									int nota = Integer.parseInt(elementos[1]);
-									int pos = Integer.parseInt(elementos[2]);
-									
-									System.out.println(line);
-								}
-								
-								
+								System.out.println(p.toString());
 							}
-							while(line != null);
-							
 						}
 					
 					catch(IOException e)
@@ -120,7 +103,14 @@ public class Main {
 				break;	
 				
 				
-				
+				case 4:
+					
+					entrada = new Scanner(System.in);
+					
+					System.out.println("Usted salió del programa correctamente");
+                    salir = true;
+					
+				break;
 			}
 	
 		}

@@ -12,14 +12,16 @@ import java.util.Scanner;
 
 public class Main {
 
+	static LinkedList <Producto> miListaProductos = new LinkedList<Producto>();
+	
 	public static void main(String[] args) 
 	{
 		Scanner entrada = new Scanner(System.in);
 		
-		final String myPath = "./src/Resources/";
+		final String myPath = "./src";
 		final String myFile = "Almacen.dat";
 		
-		LinkedHashSet <Producto> miListaProductos = new LinkedHashSet<Producto>();
+		
 		
 		int seleccionar;
 		boolean salir = false;
@@ -38,6 +40,7 @@ public class Main {
 				case 1:
 					
 					entrada = new Scanner(System.in);
+					
 					
 					System.out.println("Registrando producto");
 					
@@ -59,25 +62,24 @@ public class Main {
 				
 				
 				case 2:
-					entrada = new Scanner(System.in);
 					
-					System.out.println("Mostrando productos");
-					
-				
-					try(FileReader myreader =  new FileReader(myPath+myFile);
-						BufferedReader buffer = new BufferedReader(myreader);)
+					try(FileWriter myWriter = new FileWriter(myPath+myFile, false);
+							BufferedWriter buffer = new BufferedWriter(myWriter);)
+					{
+						for(Producto producto : miListaProductos)
 						{
-							for(Producto p: miListaProductos)
-							{
-								System.out.println(p.toString());
-							}
+							
+							 buffer.write(producto + ",0," + miListaProductos.indexOf(producto));
+							 buffer.newLine(); 
 						}
-					
+
+						
+					}
 					catch(IOException e)
 					{
 						System.out.println("Se ha producido un error en el manejo del fichero");
 						System.out.println(e.getMessage());
-					}	
+					}
 					
 					finally 
 					{
@@ -97,7 +99,7 @@ public class Main {
 					System.out.println("Introduzca el codigo del producto a borrar");
 					String codigoEliminar = entrada.nextLine();
 					
-					miListaProductos.remove(codigoEliminar);
+					eliminarProducto(codigoEliminar);
 					
 					
 				break;	
@@ -115,6 +117,34 @@ public class Main {
 	
 		}
 		while(!salir);
+		
+		
+		
 
+	}//main
+	
+
+	public static void eliminarProducto(String codigoEliminar)
+	{
+		
+			if(codigoEliminar != null)
+			{
+				miListaProductos.remove(codigoEliminar);
+			}
+			
+			else
+			{
+				System.out.println("Esta codigo no se encuentra en el la lista de productos");
+			}	
+			
 	}
-}
+	
+	
+	
+}//clase	
+	
+
+	
+	
+	
+	

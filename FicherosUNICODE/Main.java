@@ -29,9 +29,9 @@ public class Main {
 		do 
 		{
 			System.out.println("1.Registrar producto");
-			System.out.println("2.Mostrar producto/s existente/s");	
+			System.out.println("2.Mostrar productos existentes");	
 			System.out.println("3.Eliminar producto por codigo");
-			System.out.println("4.Guardar producto/s en el fichero");
+			System.out.println("4.Guardar productos en el fichero");
 			System.out.println("5.Salir de la aplicacion");
 			System.out.println("Selceccione una opcion del menu escogiendola por su numero");
 			

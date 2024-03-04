@@ -9840,3 +9840,15 @@ java.net.UnknownHostException: raw.githubusercontent.com
 
 !ENTRY org.springframework.tooling.boot.ls 1 0 2024-03-04 08:19:34.704
 !MESSAGE Classpath changed for project: GestoriaExamen
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-03-04 09:37:37.151
+!MESSAGE Classpath changed for project: FicherosBinarios
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-03-04 09:39:23.709
+!MESSAGE Classpath changed for project: FicherosUNICODE
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-03-04 09:45:18.836
+!MESSAGE Classpath changed for project: FicherosUNICODE
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-03-04 09:45:24.928
+!MESSAGE Classpath changed for project: FicherosUNICODE

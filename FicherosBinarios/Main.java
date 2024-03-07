@@ -112,6 +112,7 @@ public class Main {
 				break;	
 				
 				
+				
 				case 4:
 					
 					try(FileOutputStream fichero = new FileOutputStream(myPath+myFile, modoApend);
@@ -141,6 +142,7 @@ public class Main {
 					}
 					
 				break;
+				
 				
 				
 				case 5:

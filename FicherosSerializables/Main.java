@@ -1,12 +1,17 @@
 import java.io.BufferedWriter;
+import java.io.EOFException;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main
 {
-
+	static LinkedList <Libro> miListaLibros = new LinkedList<Libro>();
+	
 	public static void main(String[] args) 
 	{
 		Scanner entrada = new Scanner(System.in);
@@ -14,7 +19,7 @@ public class Main
 		final String myPath = "./src";
 		final String myFile = "Biblioteca.dat";
 		
-		LinkedList <Libro> miListaLibros = new LinkedList<Libro>();
+		
 		
 		int seleccionar;
 		boolean salir = false;
@@ -39,21 +44,20 @@ public class Main
 					
 						System.out.println("Registrando producto");
 						
-						System.out.println("Introduzca el codigo");
-						String codigo = entrada.nextLine();
+						System.out.println("Introduzca el ISBN");
+						String ISBN = entrada.nextLine();
 						
-						System.out.println("Introduzca el nombre");
-						String nombre = entrada.nextLine();
+						System.out.println("Introduzca el titulo");
+						String titulo = entrada.nextLine();
 						
-						System.out.println("Introduzca la cantidad");
-						int cantidad = entrada.nextInt();
+						System.out.println("Introduzca el autor");
+						String autor = entrada.nextLine();
 						
-						System.out.println("Introduzca el precio");
-						double precio = entrada.nextDouble();
+						System.out.println("Introduzca la fecha de publicacion");
+						LocalDate fechaP = LocalDate.parse(entrada.nextLine());
 					
-					
-					miListaProductos.add(new Producto(codigo, nombre, cantidad, precio));
-					
+						Libro libro = new Libro(ISBN, titulo, autor, fechaP);
+						registrarLibro(libro, miListaLibros);
 					
 					
 				break;
@@ -63,10 +67,14 @@ public class Main
 				case 2:
 					
 					System.out.println("Mostrando productos existentes en el almacen");
-					for(Producto p: miListaProductos)
+					boolean eof = false;
+					
+					for(Libro p: miListaLibros)
 					{
 						System.out.println(p.toString());
 					}
+					
+
 					
 				break;
 				
@@ -78,22 +86,22 @@ public class Main
 					
 					System.out.println("Eliminando producto...");
 					
-					System.out.println("Introduzca el codigo del producto a borrar");
-					String codigoEliminar = entrada.nextLine();
+					System.out.println("Introduzca el ISBN del libro a borrar");
+					String ISBNEliminar = entrada.nextLine();
 					
-					boolean productoEliminar = false;
-					for(int i =0; i < miListaProductos.size(); i++)
+					boolean EliminarOK = false;
+					for(int i =0; i < miListaLibros.size(); i++)
 					{
-						if(miListaProductos.get(i).getCodigo().equals(codigoEliminar))
+						if(miListaLibros.get(i).getISBN().equals(ISBNEliminar))
 						{
-							miListaProductos.remove(i);
-							productoEliminar = true;
+							miListaLibros.remove(i);
+							EliminarOK = true;
 						}
 					}
 					
-					if(productoEliminar = true)
+					if(EliminarOK = true)
 					{
-						System.out.println("Producto con codigo " + codigoEliminar + " eliminado correctamente");
+						System.out.println("Producto con codigo " + ISBNEliminar + " eliminado correctamente");
 						
 					}
 					
@@ -102,14 +110,15 @@ public class Main
 				
 				
 				case 4:
+					System.out.println("Guardando Libros en el Fichero");
 					
                     try(FileWriter myWriter = new FileWriter(myPath+myFile, false);
 							BufferedWriter buffer = new BufferedWriter(myWriter);)
 					{
-						for(Producto producto : miListaProductos)
+						for(Libro libros : miListaLibros)
 						{
 							
-							 buffer.write(producto + ",0," + miListaProductos.indexOf(producto));
+							 buffer.write((libros) + ",0," + miListaLibros.indexOf(libros));
 							 buffer.newLine(); 
 						}
 
@@ -133,8 +142,33 @@ public class Main
 					
 					entrada = new Scanner(System.in);
 					
-					System.out.println("Usted salió del programa correctamente");
-                    salir = true;
+					System.out.println("Guuardo los libros en el fichero y salió del programa correctamente");
+					   
+					try(FileWriter myWriter = new FileWriter(myPath+myFile, false);
+								BufferedWriter buffer = new BufferedWriter(myWriter);)
+						{
+							for(Libro libros : miListaLibros)
+							{
+								
+								 buffer.write((libros) + ",0," + miListaLibros.indexOf(libros));
+								 buffer.newLine(); 
+							}
+
+							
+						}
+						catch(IOException e)
+						{
+							System.out.println("Se ha producido un error en el manejo del fichero");
+							System.out.println(e.getMessage());
+						}
+						
+						finally 
+						{
+							System.out.println("La escritura ha finalizado con exito.");
+						}
+					
+					salir = true;
+                    
                     
 				break;
 				
@@ -150,20 +184,20 @@ public class Main
 	}//main
 	
 
-	public static void registrarLibro(Libro libro)  //metodo de registrar trabjador bien hecho mirando el dni ,revisar
+	public static void registrarLibro(Libro libro, LinkedList<Libro> miListaLibros)  //metodo de registrar libro para que no sea repetido
  	{
-		for(Libro libr : this.miListaLibros) 
+		for(Libro libr : miListaLibros) 
 		{
 			if(libr.getISBN().equalsIgnoreCase(libro.getISBN()))
 			{
 			 
-				System.out.println("Trabajador ya registrado , dni repetido.");
+				System.out.println("Libro ya registrado , ISBN repetido.");
 			}
 			
 			else 
 			{
 				miListaLibros.add(libro); // Agrega el libro a la coleccion de libro
-				System.out.println("Trabajador registrado con éxito.");
+				System.out.println("Libro registrado con éxito.");
 			}
 		}
  	} 

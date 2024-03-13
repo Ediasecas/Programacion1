@@ -1,9 +1,11 @@
 import java.io.BufferedWriter;
 import java.io.EOFException;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -18,7 +20,7 @@ public class Main
 		
 		final String myPath = "./src";
 		final String myFile = "Biblioteca.dat";
-		
+		final boolean modoApend = false;
 		
 		
 		int seleccionar;
@@ -26,6 +28,8 @@ public class Main
 		
 		do 
 		{
+			
+			System.out.println("---------Biblioteca Daw--------------");
 			System.out.println("1.Crear Libro y registrarlo en la Biblioteca");
 			System.out.println("2.Mostrar libros existentes");	
 			System.out.println("3.Eliminar libro por ISBN");
@@ -58,7 +62,7 @@ public class Main
 					
 						Libro libro = new Libro(ISBN, titulo, autor, fechaP);
 						registrarLibro(libro, miListaLibros);
-					
+						
 					
 				break;
 				
@@ -66,8 +70,10 @@ public class Main
 				
 				case 2:
 					
+					entrada = new Scanner(System.in);
+					
 					System.out.println("Mostrando productos existentes en el almacen");
-					boolean eof = false;
+					
 					
 					for(Libro p: miListaLibros)
 					{
@@ -110,29 +116,31 @@ public class Main
 				
 				
 				case 4:
+					entrada = new Scanner(System.in);
+					
 					System.out.println("Guardando Libros en el Fichero");
 					
-                    try(FileWriter myWriter = new FileWriter(myPath+myFile, false);
-							BufferedWriter buffer = new BufferedWriter(myWriter);)
+					try(FileOutputStream file = new FileOutputStream(myPath+myFile, modoApend );
+							ObjectOutputStream buffer = new ObjectOutputStream(file);)
 					{
-						for(Libro libros : miListaLibros)
+						//Recorro la coleccion y escribo cada uno de sus objetos
+						for(Libro t : miListaLibros)
 						{
-							
-							 buffer.write((libros) + ",0," + miListaLibros.indexOf(libros));
-							 buffer.newLine(); 
+							//Escribo objeto serializable
+							buffer.writeObject(t);
 						}
-
 						
-					}
-					catch(IOException e)
+					}catch(IOException e)
 					{
-						System.out.println("Se ha producido un error en el manejo del fichero");
+						System.out.println("Se ha producido un error en la lectura del fichero");
 						System.out.println(e.getMessage());
 					}
-					
-					finally 
+					catch(Exception e)
 					{
-						System.out.println("La escritura ha finalizado con exito.");
+						System.out.println(e.getMessage());
+					}
+					finally {
+						System.out.println("Fin de la escritura del fichero: "+myFile);
 					}
 					
 				break;
@@ -142,30 +150,30 @@ public class Main
 					
 					entrada = new Scanner(System.in);
 					
-					System.out.println("Guuardo los libros en el fichero y salió del programa correctamente");
+					System.out.println("Usted guardó los libros en el fichero y salió del programa correctamente");
 					   
-					try(FileWriter myWriter = new FileWriter(myPath+myFile, false);
-								BufferedWriter buffer = new BufferedWriter(myWriter);)
+					try(FileOutputStream file = new FileOutputStream(myPath+myFile, modoApend );
+							ObjectOutputStream buffer = new ObjectOutputStream(file);)
+					{
+						//Recorro la coleccion y escribo cada uno de sus objetos
+						for(Libro t : miListaLibros)
 						{
-							for(Libro libros : miListaLibros)
-							{
-								
-								 buffer.write((libros) + ",0," + miListaLibros.indexOf(libros));
-								 buffer.newLine(); 
-							}
-
-							
-						}
-						catch(IOException e)
-						{
-							System.out.println("Se ha producido un error en el manejo del fichero");
-							System.out.println(e.getMessage());
+							//Escribo objeto serializable
+							buffer.writeObject(t);
 						}
 						
-						finally 
-						{
-							System.out.println("La escritura ha finalizado con exito.");
-						}
+					}catch(IOException e)
+					{
+						System.out.println("Se ha producido un error en la lectura del fichero");
+						System.out.println(e.getMessage());
+					}
+					catch(Exception e)
+					{
+						System.out.println(e.getMessage());
+					}
+					finally {
+						System.out.println("Fin de la escritura del fichero: "+myFile);
+					}
 					
 					salir = true;
                     
@@ -201,6 +209,9 @@ public class Main
 			}
 		}
  	} 
+	
+	
+
 }//clase	
 	
 

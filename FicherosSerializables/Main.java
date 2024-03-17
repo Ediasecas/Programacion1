@@ -57,11 +57,11 @@ public class Main
 						System.out.println("Introduzca el autor");
 						String autor = entrada.nextLine();
 						
-						System.out.println("Introduzca la fecha de publicacion");
+						System.out.println("Introduzca la fecha de publicacion (EJ: 1999-01-01)");
 						LocalDate fechaP = LocalDate.parse(entrada.nextLine());
 					
 						Libro libro = new Libro(ISBN, titulo, autor, fechaP);
-						registrarLibro(libro, miListaLibros);
+						registrarLibro(libro);
 						
 					
 				break;
@@ -107,7 +107,7 @@ public class Main
 					
 					if(EliminarOK = true)
 					{
-						System.out.println("Producto con codigo " + ISBNEliminar + " eliminado correctamente");
+						System.out.println("Libro con ISBN " + ISBNEliminar + " eliminado correctamente");
 						
 					}
 					
@@ -119,29 +119,8 @@ public class Main
 					entrada = new Scanner(System.in);
 					
 					System.out.println("Guardando Libros en el Fichero");
-					
-					try(FileOutputStream file = new FileOutputStream(myPath+myFile, modoApend );
-							ObjectOutputStream buffer = new ObjectOutputStream(file);)
-					{
-						//Recorro la coleccion y escribo cada uno de sus objetos
-						for(Libro t : miListaLibros)
-						{
-							//Escribo objeto serializable
-							buffer.writeObject(t);
-						}
-						
-					}catch(IOException e)
-					{
-						System.out.println("Se ha producido un error en la lectura del fichero");
-						System.out.println(e.getMessage());
-					}
-					catch(Exception e)
-					{
-						System.out.println(e.getMessage());
-					}
-					finally {
-						System.out.println("Fin de la escritura del fichero: "+myFile);
-					}
+					escribirFicheroObjetos(myPath + myFile);
+			
 					
 				break;
 				
@@ -151,30 +130,8 @@ public class Main
 					entrada = new Scanner(System.in);
 					
 					System.out.println("Usted guardó los libros en el fichero y salió del programa correctamente");
-					   
-					try(FileOutputStream file = new FileOutputStream(myPath+myFile, modoApend );
-							ObjectOutputStream buffer = new ObjectOutputStream(file);)
-					{
-						//Recorro la coleccion y escribo cada uno de sus objetos
-						for(Libro t : miListaLibros)
-						{
-							//Escribo objeto serializable
-							buffer.writeObject(t);
-						}
-						
-					}catch(IOException e)
-					{
-						System.out.println("Se ha producido un error en la lectura del fichero");
-						System.out.println(e.getMessage());
-					}
-					catch(Exception e)
-					{
-						System.out.println(e.getMessage());
-					}
-					finally {
-						System.out.println("Fin de la escritura del fichero: "+myFile);
-					}
-					
+					escribirFicheroObjetos(myPath + myFile);
+			
 					salir = true;
                     
                     
@@ -192,24 +149,59 @@ public class Main
 	}//main
 	
 
-	public static void registrarLibro(Libro libro, LinkedList<Libro> miListaLibros)  //metodo de registrar libro para que no sea repetido
- 	{
-		for(Libro libr : miListaLibros) 
-		{
-			if(libr.getISBN().equalsIgnoreCase(libro.getISBN()))
-			{
-			 
-				System.out.println("Libro ya registrado , ISBN repetido.");
-			}
-			
-			else 
-			{
-				miListaLibros.add(libro); // Agrega el libro a la coleccion de libro
-				System.out.println("Libro registrado con éxito.");
-			}
-		}
- 	} 
+	public static void registrarLibro(Libro libro) 
+	{
+	    boolean ISBNRepetido = false;
+	    for (Libro libr : miListaLibros)
+	    {
+	        if (libr.getISBN().equals(libro.getISBN()))
+	        {
+	            ISBNRepetido = true;
+	            break;
+	        }
+	    }
+
+	    if (ISBNRepetido)
+	    {
+	       System.out.println("No se pudo introducir el libro, ya fue registrado, ISBN repetido.");
+	    } 
+	    else 
+	    {
+	        miListaLibros.add(libro);
+	        System.out.println("Libro registrado con éxito.");
+	    }
+	}
 	
+	
+	
+    public static void escribirFicheroObjetos(String fullPath)
+    {
+    	try(FileOutputStream file = new FileOutputStream(fullPath);
+				ObjectOutputStream buffer = new ObjectOutputStream(file);)
+        {
+            for (Libro libro : miListaLibros)
+            {
+                buffer.writeObject(libro);
+            }
+          
+        } 
+        
+        catch (IOException e) 
+        {
+            System.out.println("Se ha producido un error al guardar los libros en el fichero.");
+            System.out.println(e.getMessage());
+        }
+    	
+    	catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+    	
+		finally 
+		{
+			System.out.println("Fin de la escritura del fichero: "+fullPath);
+		}
+    }
 	
 
 }//clase	

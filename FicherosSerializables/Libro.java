@@ -3,28 +3,29 @@ import java.time.LocalDate;
 public class Libro 
 {
 
-	private int ISBN;
+	private String ISBN;
 	private String titulo;
 	private String autor;
 	private LocalDate fechaPublicacion;
 	
 	
-	public Libro(int iSBN, String titulo, String autor, LocalDate fechaPublicacion) 
+
+
+	public Libro(String iSBN, String titulo, String autor, LocalDate fechaPublicacion) 
 	{
 		super();
-		this.ISBN = iSBN;
+		ISBN = iSBN;
 		this.titulo = titulo;
 		this.autor = autor;
 		this.fechaPublicacion = fechaPublicacion;
 	}
 
-
-	public int getISBN() 
+	public String getISBN() 
 	{
 		return ISBN;
 	}
 
-	public void setISBN(int iSBN) 
+	public void setISBN(String iSBN) 
 	{
 		ISBN = iSBN;
 	}

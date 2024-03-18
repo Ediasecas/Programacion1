@@ -46,15 +46,13 @@ public class Main
 					entrada = new Scanner(System.in);
 					
 					
-						System.out.println("Registrando producto...");
+						System.out.println("Registrando producto");
 						
 						System.out.println("Introduzca el ISBN");
-						int ISBN = entrada.nextInt();
-						entrada = new Scanner(System.in);
+						String ISBN = entrada.nextLine();
 						
 						System.out.println("Introduzca el titulo");
 						String titulo = entrada.nextLine();
-						entrada = new Scanner(System.in);
 						
 						System.out.println("Introduzca el autor");
 						String autor = entrada.nextLine();
@@ -62,13 +60,8 @@ public class Main
 						System.out.println("Introduzca la fecha de publicacion (EJ: 1999-01-01)");
 						LocalDate fechaP = LocalDate.parse(entrada.nextLine());
 					
-<<<<<<< HEAD
-						Libro libroN = new Libro(ISBN, titulo, autor, fechaP);
-						registrarLibro(libroN);
-=======
 						Libro libro = new Libro(ISBN, titulo, autor, fechaP);
 						registrarLibro(libro);
->>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 						
 					
 				break;
@@ -100,12 +93,12 @@ public class Main
 					System.out.println("Eliminando producto...");
 					
 					System.out.println("Introduzca el ISBN del libro a borrar");
-					int ISBNEliminar = entrada.nextInt();
+					String ISBNEliminar = entrada.nextLine();
 					
 					boolean EliminarOK = false;
 					for(int i =0; i < miListaLibros.size(); i++)
 					{
-						if(miListaLibros.get(i).getISBN() == (ISBNEliminar))
+						if(miListaLibros.get(i).getISBN().equals(ISBNEliminar))
 						{
 							miListaLibros.remove(i);
 							EliminarOK = true;
@@ -126,13 +119,8 @@ public class Main
 					entrada = new Scanner(System.in);
 					
 					System.out.println("Guardando Libros en el Fichero");
-<<<<<<< HEAD
-					
-					escribirFicheroObjetos(myPath+myFile, miListaLibros);
-=======
 					escribirFicheroObjetos(myPath + myFile);
 			
->>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 					
 				break;
 				
@@ -142,13 +130,8 @@ public class Main
 					entrada = new Scanner(System.in);
 					
 					System.out.println("Usted guardó los libros en el fichero y salió del programa correctamente");
-<<<<<<< HEAD
-					escribirFicheroObjetos(myPath+myFile, miListaLibros);
-				
-=======
 					escribirFicheroObjetos(myPath + myFile);
 			
->>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 					salir = true;
                     
                     
@@ -165,41 +148,24 @@ public class Main
 
 	}//main
 	
-	
 
 	public static void registrarLibro(Libro libro) 
 	{
 	    boolean ISBNRepetido = false;
-<<<<<<< HEAD
-	    
-	    for (Libro libr : miListaLibros) 
-	    {
-	        if (libr.getISBN() == libro.getISBN()) 
-=======
 	    for (Libro libr : miListaLibros)
 	    {
 	        if (libr.getISBN().equals(libro.getISBN()))
->>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 	        {
 	            ISBNRepetido = true;
 	            break;
 	        }
 	    }
 
-<<<<<<< HEAD
-	    if (ISBNRepetido) 
-	    {
-	        System.out.println("No se pudo registrar el libro su ISBN ya esta repetido.");
-	    } 
-	    
-	    else
-=======
 	    if (ISBNRepetido)
 	    {
 	       System.out.println("No se pudo introducir el libro, ya fue registrado, ISBN repetido.");
 	    } 
 	    else 
->>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 	    {
 	        miListaLibros.add(libro);
 	        System.out.println("Libro registrado con éxito.");
@@ -208,38 +174,6 @@ public class Main
 	
 	
 	
-<<<<<<< HEAD
-
-	
-	
-	
-	public static void escribirFicheroObjetos(String fullPath, LinkedList<Libro> miListaLibros)
-	{
-		//Escritura de objetos serializables
-		try(FileOutputStream file = new FileOutputStream(fullPath);
-				ObjectOutputStream buffer = new ObjectOutputStream(file);)
-		{
-	
-			for(Libro t : miListaLibros)
-			{
-				
-				buffer.writeObject(t);
-			}
-			
-		}catch(IOException e)
-		{
-			System.out.println("Se ha producido un error en la lectura del fichero");
-			System.out.println(e.getMessage());
-		}
-		catch(Exception e)
-		{
-			System.out.println(e.getMessage());
-		}
-		finally {
-			System.out.println("Fin de la escritura del fichero: "+fullPath);
-		}
-	}
-=======
     public static void escribirFicheroObjetos(String fullPath)
     {
     	try(FileOutputStream file = new FileOutputStream(fullPath);
@@ -269,12 +203,7 @@ public class Main
 		}
     }
 	
->>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 
-	
-	
-	
-	
 }//clase	
 	
 

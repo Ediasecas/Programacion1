@@ -46,13 +46,15 @@ public class Main
 					entrada = new Scanner(System.in);
 					
 					
-						System.out.println("Registrando producto");
+						System.out.println("Registrando producto...");
 						
 						System.out.println("Introduzca el ISBN");
-						String ISBN = entrada.nextLine();
+						int ISBN = entrada.nextInt();
+						entrada = new Scanner(System.in);
 						
 						System.out.println("Introduzca el titulo");
 						String titulo = entrada.nextLine();
+						entrada = new Scanner(System.in);
 						
 						System.out.println("Introduzca el autor");
 						String autor = entrada.nextLine();
@@ -60,8 +62,8 @@ public class Main
 						System.out.println("Introduzca la fecha de publicacion");
 						LocalDate fechaP = LocalDate.parse(entrada.nextLine());
 					
-						Libro libro = new Libro(ISBN, titulo, autor, fechaP);
-						registrarLibro(libro, miListaLibros);
+						Libro libroN = new Libro(ISBN, titulo, autor, fechaP);
+						registrarLibro(libroN);
 						
 					
 				break;
@@ -93,12 +95,12 @@ public class Main
 					System.out.println("Eliminando producto...");
 					
 					System.out.println("Introduzca el ISBN del libro a borrar");
-					String ISBNEliminar = entrada.nextLine();
+					int ISBNEliminar = entrada.nextInt();
 					
 					boolean EliminarOK = false;
 					for(int i =0; i < miListaLibros.size(); i++)
 					{
-						if(miListaLibros.get(i).getISBN().equals(ISBNEliminar))
+						if(miListaLibros.get(i).getISBN() == (ISBNEliminar))
 						{
 							miListaLibros.remove(i);
 							EliminarOK = true;
@@ -120,28 +122,7 @@ public class Main
 					
 					System.out.println("Guardando Libros en el Fichero");
 					
-					try(FileOutputStream file = new FileOutputStream(myPath+myFile, modoApend );
-							ObjectOutputStream buffer = new ObjectOutputStream(file);)
-					{
-						//Recorro la coleccion y escribo cada uno de sus objetos
-						for(Libro t : miListaLibros)
-						{
-							//Escribo objeto serializable
-							buffer.writeObject(t);
-						}
-						
-					}catch(IOException e)
-					{
-						System.out.println("Se ha producido un error en la lectura del fichero");
-						System.out.println(e.getMessage());
-					}
-					catch(Exception e)
-					{
-						System.out.println(e.getMessage());
-					}
-					finally {
-						System.out.println("Fin de la escritura del fichero: "+myFile);
-					}
+					escribirFicheroObjetos(myPath+myFile, miListaLibros);
 					
 				break;
 				
@@ -151,30 +132,8 @@ public class Main
 					entrada = new Scanner(System.in);
 					
 					System.out.println("Usted guardó los libros en el fichero y salió del programa correctamente");
-					   
-					try(FileOutputStream file = new FileOutputStream(myPath+myFile, modoApend );
-							ObjectOutputStream buffer = new ObjectOutputStream(file);)
-					{
-						//Recorro la coleccion y escribo cada uno de sus objetos
-						for(Libro t : miListaLibros)
-						{
-							//Escribo objeto serializable
-							buffer.writeObject(t);
-						}
-						
-					}catch(IOException e)
-					{
-						System.out.println("Se ha producido un error en la lectura del fichero");
-						System.out.println(e.getMessage());
-					}
-					catch(Exception e)
-					{
-						System.out.println(e.getMessage());
-					}
-					finally {
-						System.out.println("Fin de la escritura del fichero: "+myFile);
-					}
-					
+					escribirFicheroObjetos(myPath+myFile, miListaLibros);
+				
 					salir = true;
                     
                     
@@ -191,27 +150,70 @@ public class Main
 
 	}//main
 	
+	
 
-	public static void registrarLibro(Libro libro, LinkedList<Libro> miListaLibros)  //metodo de registrar libro para que no sea repetido
- 	{
-		for(Libro libr : miListaLibros) 
+	public static void registrarLibro(Libro libro) 
+	{
+	    boolean ISBNRepetido = false;
+	    
+	    for (Libro libr : miListaLibros) 
+	    {
+	        if (libr.getISBN() == libro.getISBN()) 
+	        {
+	            ISBNRepetido = true;
+	            break;
+	        }
+	    }
+
+	    if (ISBNRepetido) 
+	    {
+	        System.out.println("No se pudo registrar el libro su ISBN ya esta repetido.");
+	    } 
+	    
+	    else
+	    {
+	        miListaLibros.add(libro);
+	        System.out.println("Libro registrado con éxito.");
+	    }
+	}
+	
+	
+	
+
+	
+	
+	
+	public static void escribirFicheroObjetos(String fullPath, LinkedList<Libro> miListaLibros)
+	{
+		//Escritura de objetos serializables
+		try(FileOutputStream file = new FileOutputStream(fullPath);
+				ObjectOutputStream buffer = new ObjectOutputStream(file);)
 		{
-			if(libr.getISBN().equalsIgnoreCase(libro.getISBN()))
+	
+			for(Libro t : miListaLibros)
 			{
-			 
-				System.out.println("Libro ya registrado , ISBN repetido.");
+				
+				buffer.writeObject(t);
 			}
 			
-			else 
-			{
-				miListaLibros.add(libro); // Agrega el libro a la coleccion de libro
-				System.out.println("Libro registrado con éxito.");
-			}
+		}catch(IOException e)
+		{
+			System.out.println("Se ha producido un error en la lectura del fichero");
+			System.out.println(e.getMessage());
 		}
- 	} 
-	
-	
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		finally {
+			System.out.println("Fin de la escritura del fichero: "+fullPath);
+		}
+	}
 
+	
+	
+	
+	
 }//clase	
 	
 

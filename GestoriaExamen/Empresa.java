@@ -318,7 +318,22 @@ public class Empresa
 	}//METODO INFO DEPARTAMENTO
     
     
-   
-    
+   /*
+	public static void registrarLibro(Libro libro) {
+	    boolean ISBNRepetido = false;
+	    for (Libro libr : miListaLibros) {
+	        if (libr.getISBN() == libro.getISBN()) {
+	            ISBNRepetido = true;
+	            break;
+	        }
+	    }
+
+	    if (ISBNRepetido) {
+	        System.out.println("Libro ya registrado, ISBN repetido.");
+	    } else {
+	        miListaLibros.add(libro);
+	        System.out.println("Libro registrado con éxito.");
+	    }
+	} */
     
 }//CLASE EMPRESA

@@ -59,11 +59,16 @@ public class Main
 						System.out.println("Introduzca el autor");
 						String autor = entrada.nextLine();
 						
-						System.out.println("Introduzca la fecha de publicacion");
+						System.out.println("Introduzca la fecha de publicacion (EJ: 1999-01-01)");
 						LocalDate fechaP = LocalDate.parse(entrada.nextLine());
 					
+<<<<<<< HEAD
 						Libro libroN = new Libro(ISBN, titulo, autor, fechaP);
 						registrarLibro(libroN);
+=======
+						Libro libro = new Libro(ISBN, titulo, autor, fechaP);
+						registrarLibro(libro);
+>>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 						
 					
 				break;
@@ -109,7 +114,7 @@ public class Main
 					
 					if(EliminarOK = true)
 					{
-						System.out.println("Producto con codigo " + ISBNEliminar + " eliminado correctamente");
+						System.out.println("Libro con ISBN " + ISBNEliminar + " eliminado correctamente");
 						
 					}
 					
@@ -121,8 +126,13 @@ public class Main
 					entrada = new Scanner(System.in);
 					
 					System.out.println("Guardando Libros en el Fichero");
+<<<<<<< HEAD
 					
 					escribirFicheroObjetos(myPath+myFile, miListaLibros);
+=======
+					escribirFicheroObjetos(myPath + myFile);
+			
+>>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 					
 				break;
 				
@@ -132,8 +142,13 @@ public class Main
 					entrada = new Scanner(System.in);
 					
 					System.out.println("Usted guardó los libros en el fichero y salió del programa correctamente");
+<<<<<<< HEAD
 					escribirFicheroObjetos(myPath+myFile, miListaLibros);
 				
+=======
+					escribirFicheroObjetos(myPath + myFile);
+			
+>>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 					salir = true;
                     
                     
@@ -155,22 +170,36 @@ public class Main
 	public static void registrarLibro(Libro libro) 
 	{
 	    boolean ISBNRepetido = false;
+<<<<<<< HEAD
 	    
 	    for (Libro libr : miListaLibros) 
 	    {
 	        if (libr.getISBN() == libro.getISBN()) 
+=======
+	    for (Libro libr : miListaLibros)
+	    {
+	        if (libr.getISBN().equals(libro.getISBN()))
+>>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 	        {
 	            ISBNRepetido = true;
 	            break;
 	        }
 	    }
 
+<<<<<<< HEAD
 	    if (ISBNRepetido) 
 	    {
 	        System.out.println("No se pudo registrar el libro su ISBN ya esta repetido.");
 	    } 
 	    
 	    else
+=======
+	    if (ISBNRepetido)
+	    {
+	       System.out.println("No se pudo introducir el libro, ya fue registrado, ISBN repetido.");
+	    } 
+	    else 
+>>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 	    {
 	        miListaLibros.add(libro);
 	        System.out.println("Libro registrado con éxito.");
@@ -179,6 +208,7 @@ public class Main
 	
 	
 	
+<<<<<<< HEAD
 
 	
 	
@@ -209,6 +239,37 @@ public class Main
 			System.out.println("Fin de la escritura del fichero: "+fullPath);
 		}
 	}
+=======
+    public static void escribirFicheroObjetos(String fullPath)
+    {
+    	try(FileOutputStream file = new FileOutputStream(fullPath);
+				ObjectOutputStream buffer = new ObjectOutputStream(file);)
+        {
+            for (Libro libro : miListaLibros)
+            {
+                buffer.writeObject(libro);
+            }
+          
+        } 
+        
+        catch (IOException e) 
+        {
+            System.out.println("Se ha producido un error al guardar los libros en el fichero.");
+            System.out.println(e.getMessage());
+        }
+    	
+    	catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+    	
+		finally 
+		{
+			System.out.println("Fin de la escritura del fichero: "+fullPath);
+		}
+    }
+	
+>>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 
 	
 	

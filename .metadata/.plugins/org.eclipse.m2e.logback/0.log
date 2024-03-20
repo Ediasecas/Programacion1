@@ -472,5 +472,9 @@ org.eclipse.jdt.core.JavaModelException: LLMS does not exist
 2024-03-17 20:05:21,675 [Worker-14: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2024-03-17 20:05:21,676 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\test\resources to target\test-classes
 2024-03-17 20:05:22,922 [Worker-11: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: 12:12:0.0.1-SNAPSHOT @ C:\Users\edied\eclipse-workspace\Programacion1\12\pom.xml.
+<<<<<<< HEAD
 >>>>>>> 2116436f7c306e4922de467a57a60220e1f74e36
 2024-03-18 12:19:39,717 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+=======
+2024-03-19 17:04:17,720 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+>>>>>>> ff57b69dd811adb8dda6079d49a8d92e11ac97ed

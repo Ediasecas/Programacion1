@@ -23,6 +23,7 @@ public class Main {
 		
 		LinkedList <Producto> miListaProductos = new LinkedList<Producto>();
 		
+		
 		int seleccionar;
 		boolean salir = false;
 		
@@ -147,12 +148,14 @@ public class Main {
 				
 			}
 	
+			
+			
 		}
 		
 		while(!salir);
 		
 		
-		
+
 
 	}//main
 	

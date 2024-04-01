@@ -9,15 +9,16 @@ public class Libro
 	private LocalDate fechaPublicacion;
 	
 	
+
+
 	public Libro(String iSBN, String titulo, String autor, LocalDate fechaPublicacion) 
 	{
 		super();
-		this.ISBN = iSBN;
+		ISBN = iSBN;
 		this.titulo = titulo;
 		this.autor = autor;
 		this.fechaPublicacion = fechaPublicacion;
 	}
-
 
 	public String getISBN() 
 	{

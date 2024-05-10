@@ -18,7 +18,7 @@ public class CuentasVarias
 	{
 		for(Cuenta cuenta : cuentasBancarias)
 		{
-			if(cuenta.getCod() == codigo)
+			if(cuenta.getCod().equals(codigo))
 			{
 				System.out.println(cuenta);
 			}

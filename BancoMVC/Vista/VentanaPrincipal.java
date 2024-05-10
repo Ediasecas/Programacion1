@@ -55,10 +55,9 @@ public class VentanaPrincipal {
 							System.out.println("Introduzca el IBAN de la cuenta");
 							String IBAN = entrada.nextLine();
 							
-							System.out.println("Introduzca el saldo actual de la cuenta");
-							double saldoA = entrada.nextInt();
+			
 							
-							Cuenta nuevaCuenta = new Cuenta (codigo, nombT, IBAN, saldoA);
+							Cuenta nuevaCuenta = new Cuenta (codigo, nombT, IBAN, 0);
 							banco.anadirCuenta(nuevaCuenta);
 							
 							

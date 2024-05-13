@@ -26,7 +26,28 @@ public class CuentasVarias
 	}
 	
 	
+	public void eliminarCuenta(String codigo)
+	{
+		for(Cuenta cuenta : cuentasBancarias)
+		{
+			if(cuenta.getCod().equals(codigo))
+			{
+				cuentasBancarias.remove(cuenta);
+			}
+		}
+	}
 	
+	
+	public void guardaraCuenta(String codigo)
+	{
+		for(Cuenta cuenta : cuentasBancarias)
+		{
+			if(cuenta.getCod().equals(codigo))
+			{
+				cuentasBancarias.remove(cuenta);
+			}
+		}
+	}
 	
 	
 	

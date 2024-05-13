@@ -93,6 +93,7 @@ public class VentanaPrincipal {
 							System.out.println("Introduzca el codigo identiificativo de la cuenta que desea borrar");
 							String codigoB = entrada.nextLine();
 							
+							banco.eliminarCuenta(codigoB);
 						break;
 						
 						

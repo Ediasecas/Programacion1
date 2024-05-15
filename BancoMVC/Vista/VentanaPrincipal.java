@@ -62,8 +62,9 @@ public class VentanaPrincipal {
 						case 2:
 							entrada.nextLine();
 							
-							System.out.println("Introduzca el codigo identiificativo de la cuenta que desea leer sus datos");
+							System.out.println("Introduzca el codigo identificativo de la cuenta que desea leer sus datos");
 							String codigoL = entrada.nextLine();
+							entrada.nextLine();
 							
 							banco.leerCuenta(codigoL);
 							
@@ -73,14 +74,33 @@ public class VentanaPrincipal {
 						
 						case 3:
 							entrada.nextLine();
+							
+							System.out.println("Introduzca el código identificativo de la cuenta que desea actualizar:");
+			                String codigoA = entrada.nextLine();
+			                
+			                System.out.println("Introduzca el nuevo nombre del titular de la cuenta:");
+			                String nuevoNombre = entrada.nextLine();
+			                
+			                System.out.println("Introduzca el nuevo número de cuenta:");
+			                String nuevoNumero = entrada.nextLine();
+			                
+			                System.out.println("Introduzca el nuevo saldo de la cuenta:");
+		                    double nuevoSaldo = entrada.nextDouble();
+		                    
+		                    entrada.nextLine();
+		                    
+			                banco.actualizarCuenta(codigoA, nuevoNombre, nuevoNumero, nuevoSaldo);
+			                    
 	
 						break;	
 						
 						
 						case 4:
 							entrada.nextLine();
+							
 							System.out.println("Introduzca el codigo identiificativo de la cuenta que desea borrar");
 							String codigoB = entrada.nextLine();
+							entrada.nextLine();
 							
 							banco.eliminarCuenta(codigoB);
 						break;
@@ -88,8 +108,8 @@ public class VentanaPrincipal {
 						
 						case 5:
 							
-							entrada.nextLine();
-						    
+							 banco.guardarCuenta(); 
+			                
 						break;
 
 						

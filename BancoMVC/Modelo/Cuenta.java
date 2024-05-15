@@ -67,7 +67,7 @@ public class Cuenta {
 	@Override
 	public String toString() 
 	{
-		return "Cuenta [cod=" + cod + ", nombreCuenta=" + nombreCuenta + ", numCuenta=" + numCuenta + ", saldo=" + saldo
+		return "Cuenta [Codigo identificativo:" + cod + ", Nombre del titular de la cuenta:" + nombreCuenta + ", Numero de cuenta:" + numCuenta + ", Saldo:" + saldo
 				+ "]";
 	}
 

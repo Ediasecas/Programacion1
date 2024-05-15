@@ -2,93 +2,82 @@ package Vista;
 
 import java.util.Scanner;
 
-
+import Controlador.CuentasVarias;
 import Modelo.Cuenta;
-import Modelo.CuentasVarias;
 
 public class VentanaPrincipal {
 
-
+		
 		public static void main(String[] args)
 		{
-			try (Scanner entrada = new Scanner(System.in)) {
-				System.out.println("__ Banco Santander __ ");
+			Scanner entrada = new Scanner(System.in);
+			System.out.println("__ Banco Santander __ ");
 				
-				CuentasVarias banco = new CuentasVarias();
+			CuentasVarias banco = new CuentasVarias();
 				
-				System.out.println("Selecciona la opcion que quieras del menu escogiendo por su numero (1-6)");
 				
      
-				boolean salir = false;
-				int seleccionar;
-				
+			boolean salir = false;
+			int seleccionar = 0;
 				
 				do 
 				{
 					
-					System.out.println("1.Crear Cuenta");
-					System.out.println("2.Leer datos de cuenta");
-					System.out.println("3.Actualizar");
-					System.out.println("4.Borrar Cuenta");
-					System.out.println("5.Guardar datos de cuenta");
-					System.out.println("6.Salir");
-				
-					System.out.println("Seleccione una opcion escogiendola por su num 1-8");
-					seleccionar = entrada.nextInt();
-					
-				
+			        System.out.println("1. Crear Cuenta");
+			        System.out.println("2. Leer datos de Cuenta");
+			        System.out.println("3. Actualizar datos de Cuenta");
+			        System.out.println("4. Borrar Cuenta");
+			        System.out.println("5. Guardar datos de Cuenta");
+			        System.out.println("6. Salir");
+			        System.out.println("Selceccione una opcion del menu escogiendola por su numero");
+			        
+			       
+			        seleccionar = entrada.nextInt();
 					switch(seleccionar)
 					
 					{
 					
-						
-						case 1:	
-							
+						case 1:				
+						        
+							System.out.println("Introduzca el codigo idntificativo de la cuenta ");
+							String cod = entrada.next();
+							     
+							    
 							entrada.nextLine();
+							System.out.println("Introduzca el nombre del titular la cuenta");	    
+							String nombreCuenta = entrada.nextLine();
+
+							       
 							
-							System.out.println("Introduzca el codigo identiificativo de la cuenta");
-							String codigo = entrada.nextLine();
+							System.out.println("Introduzca el numero de cuenta");
+							String numCuenta = entrada.nextLine();
 							
-							System.out.println("Introduzca el nombre del titular de la cuenta");
-							String nombT = entrada.nextLine();
+							Cuenta nuevaCuenta = new Cuenta(cod, nombreCuenta, numCuenta, 0);
 							
-							System.out.println("Introduzca el IBAN de la cuenta");
-							String IBAN = entrada.nextLine();
-							
-			
-							
-							Cuenta nuevaCuenta = new Cuenta (codigo, nombT, IBAN, 0);
-							banco.anadirCuenta(nuevaCuenta);
-							
+							banco.CrearCuenta(nuevaCuenta);
 							
 						break;
 						
 						
 						case 2:
-							
 							entrada.nextLine();
+							
 							System.out.println("Introduzca el codigo identiificativo de la cuenta que desea leer sus datos");
 							String codigoL = entrada.nextLine();
 							
-							banco.buscarCuenta(codigoL);
+							banco.leerCuenta(codigoL);
 							
 							
 						break;
 						
 						
 						case 3:
-					
 							entrada.nextLine();
-							System.out.println("Introduzca el codigo identiificativo de la cuenta que desea actualizar sus datos");
-							String codigoA = entrada.nextLine();
-							
-							
-							
+	
 						break;	
 						
 						
 						case 4:
-							
 							entrada.nextLine();
 							System.out.println("Introduzca el codigo identiificativo de la cuenta que desea borrar");
 							String codigoB = entrada.nextLine();
@@ -100,8 +89,6 @@ public class VentanaPrincipal {
 						case 5:
 							
 							entrada.nextLine();
-							System.out.println("Introduzca el codigo identiificativo de la cuenta que desea guardar en un archivo .dat");
-							String codigoG = entrada.nextLine();
 						    
 						break;
 
@@ -121,6 +108,8 @@ public class VentanaPrincipal {
 				
 				
 				}while(!salir);
+				
+				entrada.close();
 			}
 			
 			
@@ -128,6 +117,6 @@ public class VentanaPrincipal {
 
 	}//main
 
-}
+
 
 

@@ -1,4 +1,4 @@
-package Controlador;
+Apackage Controlador;
 
 
 import java.io.DataOutputStream;
